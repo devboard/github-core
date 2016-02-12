@@ -22,7 +22,7 @@ interface GithubMilestone
     public function getNumber();
 
     /**
-     * @return string
+     * @return \DevBoardLib\GithubCore\Milestone\State\GithubMilestoneState
      */
     public function getState();
 

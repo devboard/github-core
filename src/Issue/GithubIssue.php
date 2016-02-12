@@ -22,7 +22,7 @@ interface GithubIssue
     public function getNumber();
 
     /**
-     * @return string
+     * @return \DevBoardLib\GithubCore\Issue\State\GithubIssueState
      */
     public function getState();
 
