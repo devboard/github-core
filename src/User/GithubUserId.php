@@ -3,6 +3,9 @@ namespace DevBoardLib\GithubCore\User;
 
 use DevBoardLib\GithubCore\Identifier;
 
+/**
+ * Class GithubUserId.
+ */
 class GithubUserId implements Identifier
 {
     private $githubUserId;
@@ -10,13 +13,16 @@ class GithubUserId implements Identifier
     /**
      * UserId constructor.
      *
-     * @param $id
+     * @param $githubUserId
      */
     public function __construct($githubUserId)
     {
         $this->githubUserId = $githubUserId;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return (string) $this->githubUserId;

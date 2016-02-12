@@ -1,21 +1,18 @@
 <?php
 namespace DevBoardLib\GithubCore\Issue;
 
-use DateTime;
-use DevBoardLib\GithubCore\Issue\GithubIssueId;
-use DevBoardLib\GithubCore\Milestone\GithubMilestoneId;
-use DevBoardLib\GithubCore\Repo\GithubRepoId;
-use DevBoardLib\GithubCore\User\GithubUserId;
-
+/**
+ * Interface GithubIssue.
+ */
 interface GithubIssue
 {
     /**
-     * @return GithubIssueId
+     * @return \DevBoardLib\GithubCore\Issue\GithubIssueId
      */
     public function getId();
 
     /**
-     * @return GithubRepoId
+     * @return \DevBoardLib\GithubCore\Repo\GithubRepoId
      */
     public function getRepoId();
 
@@ -40,17 +37,17 @@ interface GithubIssue
     public function getBody();
 
     /**
-     * @return GithubUserId
+     * @return \DevBoardLib\GithubCore\User\GithubUserId
      */
     public function getCreatedByUserId();
 
     /**
-     * @return GithubUserId
+     * @return \DevBoardLib\GithubCore\User\GithubUserId
      */
     public function getAssignedToUserId();
 
     /**
-     * @return GithubMilestoneId
+     * @return \DevBoardLib\GithubCore\Milestone\GithubMilestoneId
      */
     public function getMilestoneId();
 
@@ -60,17 +57,17 @@ interface GithubIssue
     public function getCommentCount();
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
     public function getGithubCreatedAt();
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
     public function getGithubUpdatedAt();
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
     public function getGithubClosedAt();
 }

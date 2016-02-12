@@ -3,6 +3,9 @@ namespace tests\DevBoardLib\GithubCore\User;
 
 use DevBoardLib\GithubCore\User\GithubUserId;
 
+/**
+ * Class GithubUserIdTest.
+ */
 class GithubUserIdTest extends \PHPUnit_Framework_TestCase
 {
     public function testSimple()

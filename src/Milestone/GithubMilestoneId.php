@@ -3,6 +3,9 @@ namespace DevBoardLib\GithubCore\Milestone;
 
 use DevBoardLib\GithubCore\Identifier;
 
+/**
+ * Class GithubMilestoneId.
+ */
 class GithubMilestoneId implements Identifier
 {
     private $githubMilestoneId;
@@ -10,13 +13,16 @@ class GithubMilestoneId implements Identifier
     /**
      * IssueId constructor.
      *
-     * @param $id
+     * @param $githubMilestoneId
      */
     public function __construct($githubMilestoneId)
     {
         $this->githubMilestoneId = $githubMilestoneId;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return (string) $this->githubMilestoneId;

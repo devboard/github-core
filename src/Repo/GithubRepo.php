@@ -1,16 +1,15 @@
 <?php
 namespace DevBoardLib\GithubCore\Repo;
 
-use DateTime;
-use DevBoardLib\GithubCore\Repo\GithubRepoId;
-use DevBoardLib\GithubCore\User\GithubUserId;
-
+/**
+ * Interface GithubRepo.
+ */
 interface GithubRepo
 {
-    /** @return GithubRepoId */
+    /** @return \DevBoardLib\GithubCore\Repo\GithubRepoId */
     public function getId();
 
-    /** @return GithubUserId */
+    /** @return \DevBoardLib\GithubCore\User\GithubUserId */
     public function getOwnerUserId();
 
     /** @return string */
@@ -43,12 +42,12 @@ interface GithubRepo
     /** @return string */
     public function getSshUrl();
 
-    /** @return DateTime */
+    /** @return \DateTime */
     public function getGithubCreatedAt();
 
-    /** @return DateTime */
+    /** @return \DateTime */
     public function getGithubUpdatedAt();
 
-    /** @return DateTime */
+    /** @return \DateTime */
     public function getGithubPushedAt();
 }
