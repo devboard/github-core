@@ -68,4 +68,9 @@ interface GithubIssue
      * @return DateTime
      */
     public function getGithubUpdatedAt();
+
+    /**
+     * @return DateTime
+     */
+    public function getGithubClosedAt();
 }

@@ -67,4 +67,9 @@ interface GithubMilestone
      * @return DateTime
      */
     public function getGithubUpdatedAt();
+
+    /**
+     * @return DateTime
+     */
+    public function getGithubClosedAt();
 }
