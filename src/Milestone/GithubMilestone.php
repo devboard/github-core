@@ -1,20 +1,18 @@
 <?php
 namespace DevBoardLib\GithubCore\Milestone;
 
-use DateTime;
-use DevBoardLib\GithubCore\Milestone\GithubMilestoneId;
-use DevBoardLib\GithubCore\Repo\GithubRepoId;
-use DevBoardLib\GithubCore\User\GithubUserId;
-
+/**
+ * Interface GithubMilestone.
+ */
 interface GithubMilestone
 {
     /**
-     * @return GithubMilestoneId
+     * @return \DevBoardLib\GithubCore\Milestone\GithubMilestoneId
      */
     public function getId();
 
     /**
-     * @return GithubRepoId
+     * @return \DevBoardLib\GithubCore\Repo\GithubRepoId
      */
     public function getRepoId();
 
@@ -39,7 +37,7 @@ interface GithubMilestone
     public function getDescription();
 
     /**
-     * @return GithubUserId
+     * @return \DevBoardLib\GithubCore\User\GithubUserId
      */
     public function getCreatedByUserId();
 
@@ -54,22 +52,22 @@ interface GithubMilestone
     public function getClosedIssueCount();
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
     public function getDueDate();
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
     public function getGithubCreatedAt();
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
     public function getGithubUpdatedAt();
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
     public function getGithubClosedAt();
 }

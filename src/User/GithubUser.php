@@ -1,11 +1,12 @@
 <?php
 namespace DevBoardLib\GithubCore\User;
 
-use DevBoardLib\GithubCore\User\GithubUserId;
-
+/**
+ * Interface GithubUser.
+ */
 interface GithubUser
 {
-    /** @return GithubUserId */
+    /** @return \DevBoardLib\GithubCore\User\GithubUserId */
     public function getGithubUserId();
 
     /** @return string */
