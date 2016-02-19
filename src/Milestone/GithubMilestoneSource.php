@@ -149,6 +149,10 @@ class GithubMilestoneSource implements GithubMilestone
      */
     public function getCreatedByUserId()
     {
+        if (null === $this->createdByUser) {
+            return null;
+        }
+
         return $this->createdByUser->getGithubUserId();
     }
 
