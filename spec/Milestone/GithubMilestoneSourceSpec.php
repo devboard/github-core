@@ -70,6 +70,31 @@ class GithubMilestoneSourceSpec extends ObjectBehavior
             $githubClosedAt
         );
     }
+    public function it_can_be_constructed_without_creator(
+        GithubMilestoneId $id,
+        GithubRepo $repo,
+        GithubUser $createdByUser,
+        DateTime $dueDate,
+        DateTime $githubCreatedAt,
+        DateTime $githubUpdatedAt,
+        DateTime $githubClosedAt
+    ) {
+        $this->beConstructedWith(
+            $id,
+            $repo,
+            22,
+            new GithubMilestoneOpenState(),
+            'Milestone title',
+            'Milestone desc ...',
+            null,
+            32,
+            43,
+            $dueDate,
+            $githubCreatedAt,
+            $githubUpdatedAt,
+            $githubClosedAt
+        );
+    }
 
     public function it_has_github_id_as_primary_key($id)
     {
