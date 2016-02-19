@@ -65,7 +65,7 @@ class GithubMilestoneSource implements GithubMilestone
         GithubMilestoneState $state,
         $title,
         $description,
-        GithubUser $createdByUser,
+        GithubUser $createdByUser = null,
         $openIssueCount,
         $closedIssueCount,
         DateTime $dueDate = null,
