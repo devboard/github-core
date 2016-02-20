@@ -1,9 +1,9 @@
 <?php
 namespace DevBoardLib\GithubCore\User;
 
-use DevBoardLib\GithubCore\User\GithubUser;
-use DevBoardLib\GithubCore\User\GithubUserId;
-
+/**
+ * Class GithubUserSource.
+ */
 class GithubUserSource implements GithubUser
 {
     /** @var GithubUserId */

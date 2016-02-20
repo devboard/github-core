@@ -2,8 +2,6 @@
 namespace DevBoardLib\GithubCore\Issue;
 
 use DateTime;
-use DevBoardLib\GithubCore\Issue\GithubIssue;
-use DevBoardLib\GithubCore\Issue\GithubIssueId;
 use DevBoardLib\GithubCore\Issue\State\GithubIssueState;
 use DevBoardLib\GithubCore\Milestone\GithubMilestone;
 use DevBoardLib\GithubCore\Milestone\GithubMilestoneId;
@@ -12,6 +10,9 @@ use DevBoardLib\GithubCore\Repo\GithubRepoId;
 use DevBoardLib\GithubCore\User\GithubUser;
 use DevBoardLib\GithubCore\User\GithubUserId;
 
+/**
+ * Class GithubIssueSource.
+ */
 class GithubIssueSource implements GithubIssue
 {
     /** @var GithubIssueId */

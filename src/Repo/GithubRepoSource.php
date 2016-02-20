@@ -2,11 +2,12 @@
 namespace DevBoardLib\GithubCore\Repo;
 
 use DateTime;
-use DevBoardLib\GithubCore\Repo\GithubRepo;
-use DevBoardLib\GithubCore\Repo\GithubRepoId;
 use DevBoardLib\GithubCore\User\GithubUser;
 use DevBoardLib\GithubCore\User\GithubUserId;
 
+/**
+ * Class GithubRepoSource.
+ */
 class GithubRepoSource implements GithubRepo
 {
     /** @var GithubRepoId */
