@@ -2,14 +2,15 @@
 namespace DevBoardLib\GithubCore\Milestone;
 
 use DateTime;
-use DevBoardLib\GithubCore\Milestone\GithubMilestone;
-use DevBoardLib\GithubCore\Milestone\GithubMilestoneId;
 use DevBoardLib\GithubCore\Milestone\State\GithubMilestoneState;
 use DevBoardLib\GithubCore\Repo\GithubRepo;
 use DevBoardLib\GithubCore\Repo\GithubRepoId;
 use DevBoardLib\GithubCore\User\GithubUser;
 use DevBoardLib\GithubCore\User\GithubUserId;
 
+/**
+ * Class GithubMilestoneSource.
+ */
 class GithubMilestoneSource implements GithubMilestone
 {
     /** @var GithubMilestoneId */

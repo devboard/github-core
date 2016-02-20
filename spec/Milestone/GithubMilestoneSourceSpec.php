@@ -3,7 +3,6 @@ namespace spec\DevBoardLib\GithubCore\Milestone;
 
 use DateTime;
 use DevBoardLib\GithubCore\Milestone\GithubMilestoneId;
-use DevBoardLib\GithubCore\Milestone\State\GithubMilestoneClosedState;
 use DevBoardLib\GithubCore\Milestone\State\GithubMilestoneOpenState;
 use DevBoardLib\GithubCore\Repo\GithubRepo;
 use DevBoardLib\GithubCore\Repo\GithubRepoId;
