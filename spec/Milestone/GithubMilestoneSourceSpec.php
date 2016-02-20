@@ -23,77 +23,83 @@ class GithubMilestoneSourceSpec extends ObjectBehavior
     public function let(
         GithubMilestoneId $id,
         GithubRepo $repo,
+        GithubMilestoneOpenState $state,
         GithubUser $createdByUser,
         DateTime $dueDate,
-        DateTime $githubCreatedAt,
-        DateTime $githubUpdatedAt,
-        DateTime $githubClosedAt
+        DateTime $createdAt,
+        DateTime $updatedAt,
+        DateTime $closedAt
     ) {
         $this->beConstructedWith(
             $id,
             $repo,
             22,
-            new GithubMilestoneOpenState(),
+            $state,
             'Milestone title',
             'Milestone desc ...',
             $createdByUser,
             32,
             43,
             $dueDate,
-            $githubCreatedAt,
-            $githubUpdatedAt,
-            $githubClosedAt
+            $createdAt,
+            $updatedAt,
+            $closedAt
         );
     }
 
     public function it_can_be_constructed_without_due_date(
         $id,
         $repo,
+        $state,
         $createdByUser,
-        $githubCreatedAt,
-        $githubUpdatedAt,
-        DateTime $githubClosedAt
+        $createdAt,
+        $updatedAt,
+        DateTime $closedAt
     ) {
         $this->beConstructedWith(
             $id,
             $repo,
             22,
-            new GithubMilestoneClosedState(),
+            $state,
             'title',
             'desc ...',
             $createdByUser,
             32,
             43,
             null,
-            $githubCreatedAt,
-            $githubUpdatedAt,
-            $githubClosedAt
+            $createdAt,
+            $updatedAt,
+            $closedAt
         );
     }
+
     public function it_can_be_constructed_without_creator(
-        GithubMilestoneId $id,
-        GithubRepo $repo,
-        GithubUser $createdByUser,
-        DateTime $dueDate,
-        DateTime $githubCreatedAt,
-        DateTime $githubUpdatedAt,
-        DateTime $githubClosedAt
+        $id,
+        $repo,
+        $state,
+        $dueDate,
+        $createdAt,
+        $updatedAt,
+        $closedAt
     ) {
         $this->beConstructedWith(
             $id,
             $repo,
             22,
-            new GithubMilestoneOpenState(),
+            $state,
             'Milestone title',
             'Milestone desc ...',
             null,
             32,
             43,
             $dueDate,
-            $githubCreatedAt,
-            $githubUpdatedAt,
-            $githubClosedAt
+            $createdAt,
+            $updatedAt,
+            $closedAt
         );
+
+        $this->getCreatedByUser()->shouldReturn(null);
+        $this->getCreatedByUserId()->shouldReturn(null);
     }
 
     public function it_has_github_id_as_primary_key($id)
@@ -101,11 +107,16 @@ class GithubMilestoneSourceSpec extends ObjectBehavior
         $this->getId()->shouldReturn($id);
     }
 
-    public function it_holds_repo_it_belongs_to($repo, GithubRepoId $repoId)
+    public function it_holds_repo_id_it_belongs_to($repo, GithubRepoId $repoId)
     {
         $repo->getId()->willReturn($repoId);
 
         $this->getRepoId()->shouldReturn($repoId);
+    }
+
+    public function it_holds_repo_it_belongs_to($repo)
+    {
+        $this->getRepo()->shouldReturn($repo);
     }
 
     public function it_holds_milestone_number()
@@ -150,18 +161,18 @@ class GithubMilestoneSourceSpec extends ObjectBehavior
         $this->getDueDate()->shouldReturn($dueDate);
     }
 
-    public function it_knows_time_when_created_on_github($githubCreatedAt)
+    public function it_knows_time_when_created_on_github($createdAt)
     {
-        $this->getGithubCreatedAt()->shouldReturn($githubCreatedAt);
+        $this->getGithubCreatedAt()->shouldReturn($createdAt);
     }
 
-    public function it_knows_time_when_last_updated_on_github($githubUpdatedAt)
+    public function it_knows_time_when_last_updated_on_github($updatedAt)
     {
-        $this->getGithubUpdatedAt()->shouldReturn($githubUpdatedAt);
+        $this->getGithubUpdatedAt()->shouldReturn($updatedAt);
     }
 
-    public function it_knows_time_when_milestone_was_closed($githubClosedAt)
+    public function it_knows_time_when_milestone_was_closed($closedAt)
     {
-        $this->getGithubClosedAt()->shouldReturn($githubClosedAt);
+        $this->getGithubClosedAt()->shouldReturn($closedAt);
     }
 }
