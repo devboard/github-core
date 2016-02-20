@@ -25,11 +25,11 @@ class GithubIssueSourceSpec extends ObjectBehavior
         GithubIssueId $id,
         GithubRepo $repo,
         GithubUser $createdByUser,
-        GithubUser $assignedToUser = null,
-        GithubMilestone $milestone = null,
-        DateTime $githubCreatedAt,
-        DateTime $githubUpdatedAt,
-        DateTime $githubClosedAt
+        GithubUser $assignedToUser,
+        GithubMilestone $milestone,
+        DateTime $createdAt,
+        DateTime $updatedAt,
+        DateTime $closedAt
     ) {
         $this->beConstructedWith(
             $id,
@@ -42,11 +42,71 @@ class GithubIssueSourceSpec extends ObjectBehavior
             $assignedToUser,
             $milestone,
             123,
-            $githubCreatedAt,
-            $githubUpdatedAt,
-            $githubClosedAt
+            $createdAt,
+            $updatedAt,
+            $closedAt
 
         );
+    }
+
+    public function it_can_be_assigned_to_nobody(
+        $id,
+        $repo,
+        $createdByUser,
+        $milestone = null,
+        $createdAt,
+        $updatedAt,
+        $closedAt
+    ) {
+        $this->beConstructedWith(
+            $id,
+            $repo,
+            22,
+            new GithubIssueOpenState(),
+            'Issue title',
+            'Issue body ...',
+            $createdByUser,
+            null,
+            $milestone,
+            123,
+            $createdAt,
+            $updatedAt,
+            $closedAt
+
+        );
+
+        $this->getAssignedToUserId()->shouldReturn(null);
+        $this->getAssignedToUser()->shouldReturn(null);
+    }
+
+    public function it_can_be_without_milestone(
+        $id,
+        $repo,
+        $createdByUser,
+        $assignedToUser,
+        $createdAt,
+        $updatedAt,
+        $closedAt
+    ) {
+        $this->beConstructedWith(
+            $id,
+            $repo,
+            22,
+            new GithubIssueOpenState(),
+            'Issue title',
+            'Issue body ...',
+            $createdByUser,
+            $assignedToUser,
+            null,
+            123,
+            $createdAt,
+            $updatedAt,
+            $closedAt
+
+        );
+
+        $this->getMilestoneId()->shouldReturn(null);
+        $this->getMilestone()->shouldReturn(null);
     }
 
     public function it_has_github_id_as_primary_key($id)
@@ -124,18 +184,18 @@ class GithubIssueSourceSpec extends ObjectBehavior
         $this->getCommentCount()->shouldReturn(123);
     }
 
-    public function it_knows_time_when_created_on_github($githubCreatedAt)
+    public function it_knows_time_when_created_on_github($createdAt)
     {
-        $this->getGithubCreatedAt()->shouldReturn($githubCreatedAt);
+        $this->getGithubCreatedAt()->shouldReturn($createdAt);
     }
 
-    public function it_knows_time_when_last_updated_on_github($githubUpdatedAt)
+    public function it_knows_time_when_last_updated_on_github($updatedAt)
     {
-        $this->getGithubUpdatedAt()->shouldReturn($githubUpdatedAt);
+        $this->getGithubUpdatedAt()->shouldReturn($updatedAt);
     }
 
-    public function it_knows_time_when_issue_was_closed($githubClosedAt)
+    public function it_knows_time_when_issue_was_closed($closedAt)
     {
-        $this->getGithubClosedAt()->shouldReturn($githubClosedAt);
+        $this->getGithubClosedAt()->shouldReturn($closedAt);
     }
 }
