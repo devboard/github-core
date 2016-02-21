@@ -21,6 +21,12 @@ class GithubCommitSource implements GithubCommit
     /** @var GithubCommitSha */
     private $sha;
 
+    /** @var string */
+    private $authorName;
+
+    /** @var string */
+    private $authorEmail;
+
     /** @var GithubUser */
     private $author;
 
@@ -56,21 +62,25 @@ class GithubCommitSource implements GithubCommit
         GithubCommitId $id,
         GithubRepo $repo,
         GithubCommitSha $sha,
-        GithubUser $author,
+        $authorName,
+        $authorEmail,
+        GithubUser $author = null,
         DateTime $authorDate,
         GithubUser $committer,
         DateTime $committerDate,
         $message,
         $githubCommitState = null
     ) {
-        $this->id                = $id;
-        $this->repo              = $repo;
-        $this->sha               = $sha;
-        $this->author            = $author;
-        $this->authorDate        = $authorDate;
-        $this->committer         = $committer;
-        $this->committerDate     = $committerDate;
-        $this->message           = $message;
+        $this->id = $id;
+        $this->repo = $repo;
+        $this->sha = $sha;
+        $this->authorName = $authorName;
+        $this->authorEmail = $authorEmail;
+        $this->author = $author;
+        $this->authorDate = $authorDate;
+        $this->committer = $committer;
+        $this->committerDate = $committerDate;
+        $this->message = $message;
         $this->githubCommitState = $githubCommitState;
     }
 
@@ -96,6 +106,22 @@ class GithubCommitSource implements GithubCommit
     public function getSha()
     {
         return $this->sha;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAuthorName()
+    {
+        return $this->authorName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAuthorEmail()
+    {
+        return $this->authorEmail;
     }
 
     /** @return GithubUserId */

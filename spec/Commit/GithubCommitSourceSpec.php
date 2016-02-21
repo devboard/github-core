@@ -33,6 +33,8 @@ class GithubCommitSourceSpec extends ObjectBehavior
             $id,
             $repo,
             $sha,
+            'John Doe',
+            'john.doe@example.com',
             $author,
             $authorDate,
             $committer,
@@ -68,6 +70,8 @@ class GithubCommitSourceSpec extends ObjectBehavior
         $author->getGithubUserId()->willReturn($authorId);
         $this->getAuthor()->shouldReturn($author);
         $this->getAuthorId()->shouldReturn($authorId);
+        $this->getAuthorName()->shouldReturn('John Doe');
+        $this->getAuthorEmail()->shouldReturn('john.doe@example.com');
     }
 
     public function it_holds_authored_datetime($authorDate)

@@ -18,6 +18,12 @@ interface GithubCommit
     /** @return GithubCommitSha */
     public function getSha();
 
+    /** @return string */
+    public function getAuthorName();
+
+    /** @return string */
+    public function getAuthorEmail();
+
     /** @return GithubUserId */
     public function getAuthorId();
 
