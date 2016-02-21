@@ -26,7 +26,7 @@ class GithubPullRequestSourceSpec extends ObjectBehavior
     public function let(
         GithubPullRequestId $id,
         GithubRepo $repo,
-        GithubCommit $githubCommit,
+        GithubCommitId $githubCommitId,
         GithubUser $createdByUser,
         GithubUser $assignedToUser,
         GithubMilestone $milestone,
@@ -43,7 +43,7 @@ class GithubPullRequestSourceSpec extends ObjectBehavior
             true,
             'PullRequest title',
             'PullRequest body ...',
-            $githubCommit,
+            $githubCommitId,
             $createdByUser,
             $assignedToUser,
             $milestone,
@@ -57,7 +57,7 @@ class GithubPullRequestSourceSpec extends ObjectBehavior
     public function it_can_be_assigned_to_nobody(
         $id,
         $repo,
-        $githubCommit,
+        $githubCommitId,
         $createdByUser,
         $milestone = null,
         $createdAt,
@@ -73,7 +73,7 @@ class GithubPullRequestSourceSpec extends ObjectBehavior
             true,
             'PullRequest title',
             'PullRequest body ...',
-            $githubCommit,
+            $githubCommitId,
             $createdByUser,
             null,
             $milestone,
@@ -90,7 +90,7 @@ class GithubPullRequestSourceSpec extends ObjectBehavior
     public function it_can_be_without_milestone(
         $id,
         $repo,
-        $githubCommit,
+        $githubCommitId,
         $createdByUser,
         $assignedToUser,
         $createdAt,
@@ -106,7 +106,7 @@ class GithubPullRequestSourceSpec extends ObjectBehavior
             true,
             'PullRequest title',
             'PullRequest body ...',
-            $githubCommit,
+            $githubCommitId,
             $createdByUser,
             $assignedToUser,
             null,
@@ -166,12 +166,9 @@ class GithubPullRequestSourceSpec extends ObjectBehavior
         $this->getBody()->shouldReturn('PullRequest body ...');
     }
 
-    public function it_exposes_last_commit($githubCommit, GithubCommitId $githubCommitId)
+    public function it_exposes_last_commit($githubCommitId)
     {
-        $githubCommit->getId()->willReturn($githubCommitId);
-
         $this->getLastCommitId()->shouldReturn($githubCommitId);
-        $this->getLastCommit()->shouldReturn($githubCommit);
     }
 
     public function it_knows_who_created_pull_request($createdByUser)

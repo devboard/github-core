@@ -33,8 +33,8 @@ class GithubPullRequestSource implements GithubPullRequest
     private $title;
     /** @var string */
     private $body;
-    /** @var GithubCommit */
-    private $lastCommit;
+    /** @var GithubCommitId */
+    private $lastCommitId;
     /** @var GithubUser */
     private $createdByUser;
     /** @var GithubUser */
@@ -59,7 +59,7 @@ class GithubPullRequestSource implements GithubPullRequest
      * @param                        $merged
      * @param string                 $title
      * @param string                 $body
-     * @param GithubCommit           $lastCommit
+     * @param GithubCommitId         $lastCommitId
      * @param GithubUser             $createdByUser
      * @param GithubUser             $assignedToUser
      * @param GithubMilestone        $milestone
@@ -78,7 +78,7 @@ class GithubPullRequestSource implements GithubPullRequest
         $merged,
         $title,
         $body,
-        GithubCommit $lastCommit,
+        GithubCommitId $lastCommitId,
         GithubUser $createdByUser,
         GithubUser $assignedToUser = null,
         GithubMilestone $milestone = null,
@@ -86,21 +86,21 @@ class GithubPullRequestSource implements GithubPullRequest
         DateTime $githubUpdatedAt,
         DateTime $githubClosedAt = null
     ) {
-        $this->id              = $id;
-        $this->repo            = $repo;
-        $this->number          = $number;
-        $this->state           = $state;
-        $this->locked          = $locked;
-        $this->merged          = $merged;
-        $this->title           = $title;
-        $this->body            = $body;
-        $this->lastCommit      = $lastCommit;
-        $this->createdByUser   = $createdByUser;
-        $this->assignedToUser  = $assignedToUser;
-        $this->milestone       = $milestone;
+        $this->id = $id;
+        $this->repo = $repo;
+        $this->number = $number;
+        $this->state = $state;
+        $this->locked = $locked;
+        $this->merged = $merged;
+        $this->title = $title;
+        $this->body = $body;
+        $this->lastCommitId = $lastCommitId;
+        $this->createdByUser = $createdByUser;
+        $this->assignedToUser = $assignedToUser;
+        $this->milestone = $milestone;
         $this->githubCreatedAt = $githubCreatedAt;
         $this->githubUpdatedAt = $githubUpdatedAt;
-        $this->githubClosedAt  = $githubClosedAt;
+        $this->githubClosedAt = $githubClosedAt;
     }
 
     /** @return GithubPullRequestId */
@@ -160,13 +160,7 @@ class GithubPullRequestSource implements GithubPullRequest
     /** @return GithubCommitId */
     public function getLastCommitId()
     {
-        return $this->lastCommit->getId();
-    }
-
-    /** @return GithubCommit */
-    public function getLastCommit()
-    {
-        return $this->lastCommit;
+        return $this->lastCommitId;
     }
 
     /** @return GithubUserId */
