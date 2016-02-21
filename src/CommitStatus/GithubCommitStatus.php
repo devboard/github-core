@@ -11,7 +11,7 @@ use DevBoardLib\GithubCore\External\ExternalServiceId;
 interface GithubCommitStatus
 {
     /** @return GithubCommitStatusId */
-    public function getId();
+    public function getLastReceivedGithubStatusId();
 
     /** @return GithubCommitId */
     public function getGithubCommitId();
