@@ -71,16 +71,16 @@ class GithubCommitSource implements GithubCommit
         $message,
         $githubCommitState = null
     ) {
-        $this->id = $id;
-        $this->repo = $repo;
-        $this->sha = $sha;
-        $this->authorName = $authorName;
-        $this->authorEmail = $authorEmail;
-        $this->author = $author;
-        $this->authorDate = $authorDate;
-        $this->committer = $committer;
-        $this->committerDate = $committerDate;
-        $this->message = $message;
+        $this->id                = $id;
+        $this->repo              = $repo;
+        $this->sha               = $sha;
+        $this->authorName        = $authorName;
+        $this->authorEmail       = $authorEmail;
+        $this->author            = $author;
+        $this->authorDate        = $authorDate;
+        $this->committer         = $committer;
+        $this->committerDate     = $committerDate;
+        $this->message           = $message;
         $this->githubCommitState = $githubCommitState;
     }
 
