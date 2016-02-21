@@ -86,21 +86,21 @@ class GithubPullRequestSource implements GithubPullRequest
         DateTime $githubUpdatedAt,
         DateTime $githubClosedAt = null
     ) {
-        $this->id = $id;
-        $this->repo = $repo;
-        $this->number = $number;
-        $this->state = $state;
-        $this->locked = $locked;
-        $this->merged = $merged;
-        $this->title = $title;
-        $this->body = $body;
-        $this->lastCommitId = $lastCommitId;
-        $this->createdByUser = $createdByUser;
-        $this->assignedToUser = $assignedToUser;
-        $this->milestone = $milestone;
+        $this->id              = $id;
+        $this->repo            = $repo;
+        $this->number          = $number;
+        $this->state           = $state;
+        $this->locked          = $locked;
+        $this->merged          = $merged;
+        $this->title           = $title;
+        $this->body            = $body;
+        $this->lastCommitId    = $lastCommitId;
+        $this->createdByUser   = $createdByUser;
+        $this->assignedToUser  = $assignedToUser;
+        $this->milestone       = $milestone;
         $this->githubCreatedAt = $githubCreatedAt;
         $this->githubUpdatedAt = $githubUpdatedAt;
-        $this->githubClosedAt = $githubClosedAt;
+        $this->githubClosedAt  = $githubClosedAt;
     }
 
     /** @return GithubPullRequestId */
