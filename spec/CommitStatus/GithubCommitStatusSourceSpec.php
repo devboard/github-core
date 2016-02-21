@@ -21,7 +21,7 @@ class GithubCommitStatusSourceSpec extends ObjectBehavior
 
     public function let(
         GithubCommitStatusId $id,
-        GithubCommit $githubCommit,
+        GithubCommitId $githubCommitId,
         ExternalServiceId $githubExternalServiceId,
         GithubCommitStatusState $githubState,
         DateTime $githubCreatedAt,
@@ -29,7 +29,7 @@ class GithubCommitStatusSourceSpec extends ObjectBehavior
     ) {
         $this->beConstructedWith(
             $id,
-            $githubCommit,
+            $githubCommitId,
             $githubExternalServiceId,
             'description',
             'target-url',
@@ -44,10 +44,8 @@ class GithubCommitStatusSourceSpec extends ObjectBehavior
         $this->getLastReceivedGithubStatusId()->shouldReturn($id);
     }
 
-    public function it_has_github_commit($githubCommit, GithubCommitId $githubCommitId)
+    public function it_has_github_commit_id($githubCommitId)
     {
-        $githubCommit->getId()->willReturn($githubCommitId);
-        $this->getGithubCommit()->shouldReturn($githubCommit);
         $this->getGithubCommitId()->shouldReturn($githubCommitId);
     }
 

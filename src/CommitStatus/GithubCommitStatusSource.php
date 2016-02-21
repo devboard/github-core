@@ -15,8 +15,8 @@ class GithubCommitStatusSource implements GithubCommitStatus
 {
     /** @var GithubCommitStatusId */
     private $lastReceivedGithubStatusId;
-    /** @var GithubCommit */
-    private $githubCommit;
+    /** @var GithubCommitId */
+    private $githubCommitId;
     /** @var ExternalServiceId */
     private $githubExternalServiceId;
     /** @var string */
@@ -34,7 +34,7 @@ class GithubCommitStatusSource implements GithubCommitStatus
      * GithubCommitStatusSource constructor.
      *
      * @param GithubCommitStatusId    $lastReceivedGithubStatusId
-     * @param GithubCommit            $githubCommit
+     * @param GithubCommitId          $githubCommitId
      * @param ExternalServiceId       $githubExternalServiceId
      * @param string                  $description
      * @param string                  $targetUrl
@@ -44,7 +44,7 @@ class GithubCommitStatusSource implements GithubCommitStatus
      */
     public function __construct(
         GithubCommitStatusId $lastReceivedGithubStatusId,
-        GithubCommit $githubCommit,
+        GithubCommitId $githubCommitId,
         ExternalServiceId $githubExternalServiceId,
         $description,
         $targetUrl,
@@ -53,7 +53,7 @@ class GithubCommitStatusSource implements GithubCommitStatus
         DateTime $githubUpdatedAt
     ) {
         $this->lastReceivedGithubStatusId = $lastReceivedGithubStatusId;
-        $this->githubCommit               = $githubCommit;
+        $this->githubCommitId             = $githubCommitId;
         $this->githubExternalServiceId    = $githubExternalServiceId;
         $this->description                = $description;
         $this->targetUrl                  = $targetUrl;
@@ -73,13 +73,7 @@ class GithubCommitStatusSource implements GithubCommitStatus
     /** @return GithubCommitId */
     public function getGithubCommitId()
     {
-        return $this->githubCommit->getId();
-    }
-
-    /** @return GithubCommit */
-    public function getGithubCommit()
-    {
-        return $this->githubCommit;
+        return $this->githubCommitId;
     }
 
     /** @return ExternalServiceId */
