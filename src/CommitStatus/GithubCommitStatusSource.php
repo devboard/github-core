@@ -35,7 +35,7 @@ class GithubCommitStatusSource implements GithubCommitStatus
      *
      * @param GithubCommitStatusId    $lastReceivedGithubStatusId
      * @param GithubCommit            $githubCommit
-     * @param ExternalServiceId         $githubExternalServiceId
+     * @param ExternalServiceId       $githubExternalServiceId
      * @param string                  $description
      * @param string                  $targetUrl
      * @param GithubCommitStatusState $githubState
@@ -53,13 +53,13 @@ class GithubCommitStatusSource implements GithubCommitStatus
         DateTime $githubUpdatedAt
     ) {
         $this->lastReceivedGithubStatusId = $lastReceivedGithubStatusId;
-        $this->githubCommit = $githubCommit;
-        $this->githubExternalServiceId = $githubExternalServiceId;
-        $this->description = $description;
-        $this->targetUrl = $targetUrl;
-        $this->githubState = $githubState;
-        $this->githubCreatedAt = $githubCreatedAt;
-        $this->githubUpdatedAt = $githubUpdatedAt;
+        $this->githubCommit               = $githubCommit;
+        $this->githubExternalServiceId    = $githubExternalServiceId;
+        $this->description                = $description;
+        $this->targetUrl                  = $targetUrl;
+        $this->githubState                = $githubState;
+        $this->githubCreatedAt            = $githubCreatedAt;
+        $this->githubUpdatedAt            = $githubUpdatedAt;
     }
 
     /**
@@ -87,7 +87,6 @@ class GithubCommitStatusSource implements GithubCommitStatus
     {
         return $this->githubExternalServiceId;
     }
-
 
     /** @return string */
     public function getDescription()
