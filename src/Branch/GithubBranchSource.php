@@ -30,8 +30,6 @@ class GithubBranchSource implements GithubBranch
      * @param GithubRepo     $repo
      * @param string         $name
      * @param GithubCommit   $lastCommit
-     *
-     * @internal param GithubCommitId $lastCommitId
      */
     public function __construct(GithubBranchId $id, GithubRepo $repo, $name, GithubCommit $lastCommit)
     {

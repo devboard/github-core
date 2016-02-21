@@ -30,8 +30,6 @@ class GithubTagSource implements GithubTag
      * @param GithubRepo   $repo
      * @param string       $name
      * @param GithubCommit $lastCommit
-     *
-     * @internal param GithubCommitId $lastCommitId
      */
     public function __construct(GithubTagId $id, GithubRepo $repo, $name, GithubCommit $lastCommit)
     {

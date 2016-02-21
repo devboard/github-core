@@ -51,12 +51,16 @@ class GithubCommitSource implements GithubCommit
      * @param GithubCommitId  $id
      * @param GithubRepo      $repo
      * @param GithubCommitSha $sha
+     * @param                 $authorName
+     * @param                 $authorEmail
      * @param GithubUser      $author
      * @param DateTime        $authorDate
      * @param GithubUser      $committer
      * @param DateTime        $committerDate
      * @param string          $message
      * @param string          $githubCommitState
+     *
+     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
     public function __construct(
         GithubCommitId $id,

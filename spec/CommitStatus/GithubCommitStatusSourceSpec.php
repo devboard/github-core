@@ -39,7 +39,7 @@ class GithubCommitStatusSourceSpec extends ObjectBehavior
         );
     }
 
-    public function it_has_github_id_asprimary_key($id)
+    public function it_has_github_id_as_primary_key($id)
     {
         $this->getId()->shouldReturn($id);
     }

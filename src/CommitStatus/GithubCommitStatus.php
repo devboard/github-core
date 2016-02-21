@@ -2,10 +2,8 @@
 namespace DevBoardLib\GithubCore\CommitStatus;
 
 use DateTime;
-use DevBoardLib\GithubCore\Commit\GithubCommit;
 use DevBoardLib\GithubCore\Commit\GithubCommitId;
 use DevBoardLib\GithubCore\CommitStatus\State\GithubCommitStatusState;
-use DevBoardLib\GithubCore\External\ExternalService;
 use DevBoardLib\GithubCore\External\ExternalServiceId;
 
 /**

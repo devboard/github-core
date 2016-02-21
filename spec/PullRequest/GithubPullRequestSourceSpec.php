@@ -2,7 +2,6 @@
 namespace spec\DevBoardLib\GithubCore\PullRequest;
 
 use DateTime;
-use DevBoardLib\GithubCore\Commit\GithubCommit;
 use DevBoardLib\GithubCore\Commit\GithubCommitId;
 use DevBoardLib\GithubCore\Milestone\GithubMilestone;
 use DevBoardLib\GithubCore\Milestone\GithubMilestoneId;
