@@ -1,4 +1,5 @@
 <?php
+
 namespace DevBoardLib\GithubCore\Repo;
 
 use DevBoardLib\GithubCore\Identifier;

@@ -1,4 +1,5 @@
 <?php
+
 namespace tests\DevBoardLib\GithubCore\User;
 
 use DevBoardLib\GithubCore\User\GithubUserId;

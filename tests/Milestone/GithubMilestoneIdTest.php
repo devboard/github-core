@@ -1,4 +1,5 @@
 <?php
+
 namespace tests\DevBoardLib\GithubCore\Milestone;
 
 use DevBoardLib\GithubCore\Milestone\GithubMilestoneId;

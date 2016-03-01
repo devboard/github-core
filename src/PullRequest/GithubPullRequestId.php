@@ -1,4 +1,5 @@
 <?php
+
 namespace DevBoardLib\GithubCore\PullRequest;
 
 use DevBoardLib\GithubCore\Identifier;
