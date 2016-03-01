@@ -1,4 +1,5 @@
 <?php
+
 namespace tests\DevBoardLib\GithubCore\Milestone\State;
 
 use DevBoardLib\GithubCore\Milestone\State\GithubMilestoneStateFactory;

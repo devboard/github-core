@@ -1,4 +1,5 @@
 <?php
+
 namespace DevBoardLib\GithubCore\Commit;
 
 use DevBoardLib\GithubCore\Identifier;

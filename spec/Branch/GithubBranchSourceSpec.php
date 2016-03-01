@@ -1,4 +1,5 @@
 <?php
+
 namespace spec\DevBoardLib\GithubCore\Branch;
 
 use DevBoardLib\GithubCore\Branch\GithubBranchId;

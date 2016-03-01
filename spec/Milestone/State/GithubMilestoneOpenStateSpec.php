@@ -1,4 +1,5 @@
 <?php
+
 namespace spec\DevBoardLib\GithubCore\Milestone\State;
 
 use PhpSpec\ObjectBehavior;

@@ -1,4 +1,5 @@
 <?php
+
 namespace tests\DevBoardLib\GithubCore\Issue\State;
 
 use DevBoardLib\GithubCore\Issue\State\GithubIssueOpenState;

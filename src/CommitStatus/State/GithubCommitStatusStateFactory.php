@@ -1,4 +1,5 @@
 <?php
+
 namespace DevBoardLib\GithubCore\CommitStatus\State;
 
 use Exception;

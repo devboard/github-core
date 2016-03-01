@@ -1,4 +1,5 @@
 <?php
+
 namespace spec\DevBoardLib\GithubCore\External;
 
 use DevBoardLib\GithubCore\External\ExternalServiceId;

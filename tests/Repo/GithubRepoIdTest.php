@@ -1,4 +1,5 @@
 <?php
+
 namespace tests\DevBoardLib\GithubCore\Repo;
 
 use DevBoardLib\GithubCore\Repo\GithubRepoId;

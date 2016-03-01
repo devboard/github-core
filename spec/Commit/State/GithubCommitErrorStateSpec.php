@@ -1,4 +1,5 @@
 <?php
+
 namespace spec\DevBoardLib\GithubCore\Commit\State;
 
 use PhpSpec\ObjectBehavior;

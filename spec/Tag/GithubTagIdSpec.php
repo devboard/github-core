@@ -1,4 +1,5 @@
 <?php
+
 namespace spec\DevBoardLib\GithubCore\Tag;
 
 use DevBoardLib\GithubCore\Repo\GithubRepoId;

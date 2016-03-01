@@ -1,4 +1,5 @@
 <?php
+
 namespace tests\DevBoardLib\GithubCore\Issue;
 
 use DevBoardLib\GithubCore\Issue\GithubIssueId;

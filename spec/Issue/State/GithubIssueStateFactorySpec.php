@@ -1,4 +1,5 @@
 <?php
+
 namespace spec\DevBoardLib\GithubCore\Issue\State;
 
 use PhpSpec\ObjectBehavior;

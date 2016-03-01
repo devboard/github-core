@@ -1,4 +1,5 @@
 <?php
+
 namespace DevBoardLib\GithubCore\Branch;
 
 use DevBoardLib\GithubCore\Commit\GithubCommitId;
