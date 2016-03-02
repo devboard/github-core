@@ -34,4 +34,16 @@ class GithubTagId implements Identifier
     {
         return $this->githubRepoId->__toString().'-'.$this->tagName;
     }
+
+    /**
+     * @param $value
+     *
+     * @return GithubTagId
+     */
+    public static function createFromValue($value)
+    {
+        list($repoId, $tagName) = explode('-', $value, 2);
+
+        return new self(new GithubRepoId($repoId), $tagName);
+    }
 }

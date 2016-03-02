@@ -26,4 +26,11 @@ class GithubCommitIdSpec extends ObjectBehavior
     {
         $this->__toString()->shouldReturn('123-sha23231231');
     }
+
+    public function it_can_create_instance_from_value()
+    {
+        $result = $this->createFromValue('123-sha23231231');
+
+        $result->shouldBeAnInstanceOf('DevBoardLib\GithubCore\Commit\GithubCommitId');
+    }
 }

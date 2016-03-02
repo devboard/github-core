@@ -34,4 +34,16 @@ class GithubCommitId implements Identifier
     {
         return $this->githubRepoId->__toString().'-'.$this->commitSha->__toString();
     }
+
+    /**
+     * @param $value
+     *
+     * @return GithubCommitId
+     */
+    public static function createFromValue($value)
+    {
+        list($repoId, $commitSha) = explode('-', $value, 2);
+
+        return new self(new GithubRepoId($repoId), new GithubCommitSha($commitSha));
+    }
 }
