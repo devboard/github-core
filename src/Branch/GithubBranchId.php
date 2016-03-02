@@ -34,4 +34,16 @@ class GithubBranchId implements Identifier
     {
         return $this->githubRepoId->__toString().'-'.$this->branchName;
     }
+
+    /**
+     * @param $value
+     *
+     * @return GithubBranchId
+     */
+    public static function createFromValue($value)
+    {
+        list($repoId, $branchName) = explode('-', $value, 2);
+
+        return new self(new GithubRepoId($repoId), $branchName);
+    }
 }

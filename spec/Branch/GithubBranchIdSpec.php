@@ -24,4 +24,11 @@ class GithubBranchIdSpec extends ObjectBehavior
     {
         $this->__toString()->shouldReturn('123-master');
     }
+
+    public function it_can_create_instance_from_value()
+    {
+        $result = $this->createFromValue('123-master');
+
+        $result->shouldBeAnInstanceOf('DevBoardLib\GithubCore\Branch\GithubBranchId');
+    }
 }

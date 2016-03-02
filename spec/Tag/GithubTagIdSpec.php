@@ -24,4 +24,11 @@ class GithubTagIdSpec extends ObjectBehavior
     {
         $this->__toString()->shouldReturn('123-0.2');
     }
+
+    public function it_can_create_instance_from_value()
+    {
+        $result = $this->createFromValue('123-0.2');
+
+        $result->shouldBeAnInstanceOf('DevBoardLib\GithubCore\Tag\GithubTagId');
+    }
 }
