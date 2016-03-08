@@ -30,7 +30,7 @@ class GithubRepoSource implements GithubRepo
     /** @var string */
     private $defaultBranch;
     /** @var int */
-    private $githubPrivate;
+    private $private;
     /** @var string */
     private $gitUrl;
     /** @var string */
@@ -52,9 +52,9 @@ class GithubRepoSource implements GithubRepo
      * @param string       $fullName
      * @param string       $htmlUrl
      * @param string       $description
-     * @param int          $fork
+     * @param bool         $fork
      * @param string       $defaultBranch
-     * @param int          $githubPrivate
+     * @param bool         $private
      * @param string       $gitUrl
      * @param string       $sshUrl
      * @param DateTime     $githubCreatedAt
@@ -73,7 +73,7 @@ class GithubRepoSource implements GithubRepo
         $description,
         $fork,
         $defaultBranch,
-        $githubPrivate,
+        $private,
         $gitUrl,
         $sshUrl,
         DateTime $githubCreatedAt,
@@ -89,7 +89,7 @@ class GithubRepoSource implements GithubRepo
         $this->description     = $description;
         $this->fork            = $fork;
         $this->defaultBranch   = $defaultBranch;
-        $this->githubPrivate   = $githubPrivate;
+        $this->private         = $private;
         $this->gitUrl          = $gitUrl;
         $this->sshUrl          = $sshUrl;
         $this->githubCreatedAt = $githubCreatedAt;
@@ -164,7 +164,7 @@ class GithubRepoSource implements GithubRepo
     /**
      * @return int
      */
-    public function getFork()
+    public function isFork()
     {
         return $this->fork;
     }
@@ -180,9 +180,9 @@ class GithubRepoSource implements GithubRepo
     /**
      * @return int
      */
-    public function getGithubPrivate()
+    public function isPrivate()
     {
-        return $this->githubPrivate;
+        return $this->private;
     }
 
     /**

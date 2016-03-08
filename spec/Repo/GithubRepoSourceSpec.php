@@ -81,9 +81,9 @@ class GithubRepoSourceSpec extends ObjectBehavior
         $this->getFullName()->shouldReturn($fullName);
         $this->getHtmlUrl()->shouldReturn($htmlUrl);
         $this->getDescription()->shouldReturn($description);
-        $this->getFork()->shouldReturn($fork);
+        $this->isFork()->shouldReturn($fork);
         $this->getDefaultBranch()->shouldReturn($defaultBranch);
-        $this->getGithubPrivate()->shouldReturn($githubPrivate);
+        $this->isPrivate()->shouldReturn($githubPrivate);
         $this->getGitUrl()->shouldReturn($gitUrl);
         $this->getSshUrl()->shouldReturn($sshUrl);
         $this->getGithubCreatedAt()->shouldReturn($githubCreatedAt);
