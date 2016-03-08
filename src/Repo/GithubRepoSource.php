@@ -9,7 +9,7 @@ use DevBoardLib\GithubCore\User\GithubUserId;
 /**
  * Class GithubRepoSource.
  */
-class GithubRepoSource implements GithubRepo
+class GithubRepoSource implements GithubRepo, GithubRepoPermissonsInterface
 {
     /** @var GithubRepoId */
     private $id;
@@ -35,6 +35,8 @@ class GithubRepoSource implements GithubRepo
     private $gitUrl;
     /** @var string */
     private $sshUrl;
+    /** @var GithubRepoPermissions */
+    private $permissions;
     /** @var DateTime */
     private $githubCreatedAt;
     /** @var DateTime */
@@ -45,21 +47,22 @@ class GithubRepoSource implements GithubRepo
     /**
      * GithubRepoSource constructor.
      *
-     * @param GithubRepoId $id
-     * @param GithubUser   $ownerUser
-     * @param string       $owner
-     * @param string       $name
-     * @param string       $fullName
-     * @param string       $htmlUrl
-     * @param string       $description
-     * @param bool         $fork
-     * @param string       $defaultBranch
-     * @param bool         $private
-     * @param string       $gitUrl
-     * @param string       $sshUrl
-     * @param DateTime     $githubCreatedAt
-     * @param DateTime     $githubUpdatedAt
-     * @param DateTime     $githubPushedAt
+     * @param GithubRepoId          $id
+     * @param GithubUser            $ownerUser
+     * @param string                $owner
+     * @param string                $name
+     * @param string                $fullName
+     * @param string                $htmlUrl
+     * @param string                $description
+     * @param bool                  $fork
+     * @param string                $defaultBranch
+     * @param bool                  $private
+     * @param string                $gitUrl
+     * @param string                $sshUrl
+     * @param GithubRepoPermissions $permissions
+     * @param DateTime              $githubCreatedAt
+     * @param DateTime              $githubUpdatedAt
+     * @param DateTime              $githubPushedAt
      *
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
@@ -76,6 +79,7 @@ class GithubRepoSource implements GithubRepo
         $private,
         $gitUrl,
         $sshUrl,
+        GithubRepoPermissions $permissions = null,
         DateTime $githubCreatedAt,
         DateTime $githubUpdatedAt,
         DateTime $githubPushedAt
@@ -92,6 +96,7 @@ class GithubRepoSource implements GithubRepo
         $this->private         = $private;
         $this->gitUrl          = $gitUrl;
         $this->sshUrl          = $sshUrl;
+        $this->permissions     = $permissions;
         $this->githubCreatedAt = $githubCreatedAt;
         $this->githubUpdatedAt = $githubUpdatedAt;
         $this->githubPushedAt  = $githubPushedAt;
@@ -199,6 +204,30 @@ class GithubRepoSource implements GithubRepo
     public function getSshUrl()
     {
         return $this->sshUrl;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return $this->permissions->isAdmin();
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPushAllowed()
+    {
+        return $this->permissions->isPushAllowed();
+    }
+
+    /**
+     * @return bool
+     */
+    public function isReadAllowed()
+    {
+        return $this->permissions->isReadAllowed();
     }
 
     /**

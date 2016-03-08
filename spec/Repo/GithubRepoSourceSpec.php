@@ -4,6 +4,7 @@ namespace spec\DevBoardLib\GithubCore\Repo;
 
 use DateTime;
 use DevBoardLib\GithubCore\Repo\GithubRepoId;
+use DevBoardLib\GithubCore\Repo\GithubRepoPermissions;
 use DevBoardLib\GithubCore\User\GithubUser;
 use DevBoardLib\GithubCore\User\GithubUserId;
 use PhpSpec\ObjectBehavior;
@@ -30,6 +31,7 @@ class GithubRepoSourceSpec extends ObjectBehavior
         $githubPrivate,
         $gitUrl,
         $sshUrl,
+        GithubRepoPermissions $permissions,
         DateTime $githubCreatedAt,
         DateTime $githubUpdatedAt,
         DateTime $githubPushedAt
@@ -47,6 +49,7 @@ class GithubRepoSourceSpec extends ObjectBehavior
             $githubPrivate,
             $gitUrl,
             $sshUrl,
+            $permissions,
             $githubCreatedAt,
             $githubUpdatedAt,
             $githubPushedAt
