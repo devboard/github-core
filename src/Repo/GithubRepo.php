@@ -5,7 +5,7 @@ namespace DevBoardLib\GithubCore\Repo;
 /**
  * Interface GithubRepo.
  */
-interface GithubRepo
+interface GithubRepo extends GithubRepoApiInterface
 {
     /** @return \DevBoardLib\GithubCore\Repo\GithubRepoId */
     public function getId();
@@ -13,35 +13,14 @@ interface GithubRepo
     /** @return \DevBoardLib\GithubCore\User\GithubUserId */
     public function getOwnerUserId();
 
-    /** @return string */
-    public function getOwner();
-
-    /** @return string */
-    public function getName();
-
-    /** @return string */
-    public function getFullName();
-
-    /** @return string */
-    public function getHtmlUrl();
-
-    /** @return string */
-    public function getDescription();
-
-    /** @return int */
-    public function getFork();
+    /** @return bool */
+    public function isFork();
 
     /** @return string */
     public function getDefaultBranch();
 
-    /** @return int */
-    public function getGithubPrivate();
-
-    /** @return string */
-    public function getGitUrl();
-
-    /** @return string */
-    public function getSshUrl();
+    /** @return bool */
+    public function isPrivate();
 
     /** @return \DateTime */
     public function getGithubCreatedAt();
