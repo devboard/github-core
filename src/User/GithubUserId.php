@@ -19,9 +19,17 @@ class GithubUserId implements Identifier
      *
      * @param $githubUserId
      */
-    public function __construct($githubUserId)
+    public function __construct(int $githubUserId)
     {
         $this->githubUserId = $githubUserId;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId() : int
+    {
+        return $this->githubUserId;
     }
 
     /**

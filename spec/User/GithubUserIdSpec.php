@@ -18,6 +18,11 @@ class GithubUserIdSpec extends ObjectBehavior
         $this->beConstructedWith(123);
     }
 
+    public function it_gives_access_to_id()
+    {
+        $this->getId()->shouldReturn(123);
+    }
+
     public function it_has_to_string_conversion()
     {
         $this->__toString()->shouldReturn('123');
