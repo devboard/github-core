@@ -2,44 +2,24 @@
 
 namespace DevBoardLib\GithubCore\Commit;
 
-use DateTime;
 use DevBoardLib\GithubCore\Repo\GithubRepoId;
-use DevBoardLib\GithubCore\User\GithubUserId;
 
 /**
  */
 interface GithubCommit
 {
-    /** @return GithubCommitId */
-    public function getId();
+    /** @return GithubCommitSha */
+    public function getSha() : GithubCommitSha;
 
     /** @return GithubRepoId */
-    public function getRepoId();
+    public function getGithubRepoId() : GithubRepoId;
 
-    /** @return GithubCommitSha */
-    public function getSha();
+    /** @return GithubCommitAuthor */
+    public function getAuthor() : GithubCommitAuthor;
 
-    /** @return string */
-    public function getAuthorName();
-
-    /** @return string */
-    public function getAuthorEmail();
-
-    /** @return GithubUserId */
-    public function getAuthorId();
-
-    /** @return DateTime */
-    public function getAuthorDate();
-
-    /** @return GithubUserId */
-    public function getCommitterId();
-
-    /** @return DateTime */
-    public function getCommitterDate();
+    /** @return GithubCommitCommitter */
+    public function getCommitter() : GithubCommitCommitter;
 
     /** @return string */
-    public function getMessage();
-
-    /** @return string */
-    public function getGithubCommitState();
+    public function getMessage() : string;
 }

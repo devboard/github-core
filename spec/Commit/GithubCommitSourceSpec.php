@@ -2,13 +2,11 @@
 
 namespace spec\DevBoardLib\GithubCore\Commit;
 
-use DateTime;
-use DevBoardLib\GithubCore\Commit\GithubCommitId;
+use DevBoardLib\GithubCore\Commit\GithubCommit;
+use DevBoardLib\GithubCore\Commit\GithubCommitAuthor;
+use DevBoardLib\GithubCore\Commit\GithubCommitCommitter;
 use DevBoardLib\GithubCore\Commit\GithubCommitSha;
-use DevBoardLib\GithubCore\Repo\GithubRepo;
 use DevBoardLib\GithubCore\Repo\GithubRepoId;
-use DevBoardLib\GithubCore\User\GithubUser;
-use DevBoardLib\GithubCore\User\GithubUserId;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -17,48 +15,21 @@ class GithubCommitSourceSpec extends ObjectBehavior
     public function it_is_initializable()
     {
         $this->shouldHaveType('DevBoardLib\GithubCore\Commit\GithubCommitSource');
-        $this->shouldHaveType('DevBoardLib\GithubCore\Commit\GithubCommit');
+        $this->shouldHaveType(GithubCommit::class);
     }
 
     public function let(
-        GithubCommitId $id,
-        GithubRepo $repo,
         GithubCommitSha $sha,
-        GithubUser $author,
-        DateTime $authorDate,
-        GithubUser $committer,
-        DateTime $committerDate,
-        $githubCommitState
+        GithubRepoId $githubRepoId,
+        GithubCommitAuthor $author,
+        GithubCommitCommitter $committer
     ) {
-        $this->beConstructedWith(
-            $id,
-            $repo,
-            $sha,
-            'John Doe',
-            'john.doe@example.com',
-            $author,
-            $authorDate,
-            $committer,
-            $committerDate,
-            'message',
-            $githubCommitState
-        );
+        $this->beConstructedWith($sha, $githubRepoId, $author, $committer, $message = 'Commit message');
     }
 
-    public function it_has_primary_key($id)
+    public function it_holds_repo_id_it_belongs_to($githubRepoId)
     {
-        $this->getId()->shouldReturn($id);
-    }
-
-    public function it_holds_repo_id_it_belongs_to($repo, GithubRepoId $repoId)
-    {
-        $repo->getId()->willReturn($repoId);
-        $this->getRepoId()->shouldReturn($repoId);
-    }
-
-    public function it_holds_repo_it_belongs_to($repo)
-    {
-        $this->getRepo()->shouldReturn($repo);
+        $this->getGithubRepoId()->shouldReturn($githubRepoId);
     }
 
     public function it_holds_commit_sha($sha)
@@ -66,39 +37,18 @@ class GithubCommitSourceSpec extends ObjectBehavior
         $this->getSha()->shouldReturn($sha);
     }
 
-    public function it_holds_author($author, GithubUserId $authorId)
+    public function it_holds_author($author)
     {
-        $author->getGithubUserId()->willReturn($authorId);
         $this->getAuthor()->shouldReturn($author);
-        $this->getAuthorId()->shouldReturn($authorId);
-        $this->getAuthorName()->shouldReturn('John Doe');
-        $this->getAuthorEmail()->shouldReturn('john.doe@example.com');
     }
 
-    public function it_holds_authored_datetime($authorDate)
+    public function it_holds_committer($committer)
     {
-        $this->getAuthorDate()->shouldReturn($authorDate);
-    }
-
-    public function it_holds_committer($committer, GithubUserId $committerId)
-    {
-        $committer->getGithubUserId()->willReturn($committerId);
         $this->getCommitter()->shouldReturn($committer);
-        $this->getCommitterId()->shouldReturn($committerId);
-    }
-
-    public function it_holds_committer_datetime($committerDate)
-    {
-        $this->getCommitterDate()->shouldReturn($committerDate);
     }
 
     public function it_holds_commit_message()
     {
-        $this->getMessage()->shouldReturn('message');
-    }
-
-    public function it_holds_github_commit_state($githubCommitState)
-    {
-        $this->getGithubCommitState()->shouldReturn($githubCommitState);
+        $this->getMessage()->shouldReturn('Commit message');
     }
 }

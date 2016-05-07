@@ -17,7 +17,7 @@ class GithubCommitSha implements Identifier
      *
      * @param $commitSha
      */
-    public function __construct($commitSha)
+    public function __construct(string $commitSha)
     {
         $this->commitSha = $commitSha;
     }
@@ -25,7 +25,15 @@ class GithubCommitSha implements Identifier
     /**
      * @return string
      */
-    public function __toString()
+    public function getId() : string
+    {
+        return $this->commitSha;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString() : string
     {
         return (string) $this->commitSha;
     }

@@ -17,6 +17,10 @@ class GithubCommitShaSpec extends ObjectBehavior
     {
         $this->beConstructedWith('sha23231231');
     }
+    public function it_gives_access_to_id()
+    {
+        $this->getId()->shouldReturn('sha23231231');
+    }
 
     public function it_has_to_string_conversion()
     {

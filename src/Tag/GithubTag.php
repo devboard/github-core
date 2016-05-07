@@ -2,7 +2,7 @@
 
 namespace DevBoardLib\GithubCore\Tag;
 
-use DevBoardLib\GithubCore\Commit\GithubCommitId;
+use DevBoardLib\GithubCore\Commit\GithubCommit;
 use DevBoardLib\GithubCore\Repo\GithubRepoId;
 
 /**
@@ -10,15 +10,12 @@ use DevBoardLib\GithubCore\Repo\GithubRepoId;
  */
 interface GithubTag
 {
-    /** @return GithubTagId */
-    public function getId();
+    /** @return string */
+    public function getName() : string;
 
     /** @return GithubRepoId */
-    public function getRepoId();
+    public function getGithubRepoId() : GithubRepoId;
 
-    /** @return string */
-    public function getName();
-
-    /** @return GithubCommitId */
-    public function getLastCommitId();
+    /** @return GithubCommit */
+    public function getLastCommit() : GithubCommit;
 }

@@ -3,8 +3,6 @@
 namespace DevBoardLib\GithubCore\Tag;
 
 use DevBoardLib\GithubCore\Commit\GithubCommit;
-use DevBoardLib\GithubCore\Commit\GithubCommitId;
-use DevBoardLib\GithubCore\Repo\GithubRepo;
 use DevBoardLib\GithubCore\Repo\GithubRepoId;
 
 /**
@@ -12,11 +10,8 @@ use DevBoardLib\GithubCore\Repo\GithubRepoId;
  */
 class GithubTagSource implements GithubTag
 {
-    /** @var GithubTagId */
-    private $id;
-
-    /** @var GithubRepo */
-    private $repo;
+    /** @var GithubRepoId */
+    private $githubRepoId;
 
     /** @var string */
     private $name;
@@ -25,53 +20,39 @@ class GithubTagSource implements GithubTag
     private $lastCommit;
 
     /**
-     * GithubTagSource constructor.
+     * GithubBranchSource constructor.
      *
-     * @param GithubTagId  $id
-     * @param GithubRepo   $repo
+     * @param GithubRepoId $githubRepoId
      * @param string       $name
      * @param GithubCommit $lastCommit
      */
-    public function __construct(GithubTagId $id, GithubRepo $repo, $name, GithubCommit $lastCommit)
+    public function __construct(GithubRepoId $githubRepoId, string $name, GithubCommit $lastCommit)
     {
-        $this->id         = $id;
-        $this->repo       = $repo;
-        $this->name       = $name;
-        $this->lastCommit = $lastCommit;
+        $this->githubRepoId = $githubRepoId;
+        $this->name         = $name;
+        $this->lastCommit   = $lastCommit;
     }
 
-    /** @return GithubTagId */
-    public function getId()
+    /**
+     * @return GithubRepoId
+     */
+    public function getGithubRepoId() : GithubRepoId
     {
-        return $this->id;
+        return $this->githubRepoId;
     }
 
-    /** @return GithubRepoId */
-    public function getRepoId()
-    {
-        return $this->repo->getId();
-    }
-
-    /** @return GithubRepo */
-    public function getRepo()
-    {
-        return $this->repo;
-    }
-
-    /** @return string */
-    public function getName()
+    /**
+     * @return string
+     */
+    public function getName() : string
     {
         return $this->name;
     }
 
-    /** @return GithubCommitId */
-    public function getLastCommitId()
-    {
-        return $this->lastCommit->getId();
-    }
-
-    /** @return GithubCommitId */
-    public function getLastCommit()
+    /**
+     * @return GithubCommit
+     */
+    public function getLastCommit() : GithubCommit
     {
         return $this->lastCommit;
     }
