@@ -25,6 +25,14 @@ class GithubRepoId implements Identifier
     }
 
     /**
+     * @return int
+     */
+    public function getId() : int
+    {
+        return $this->githubRepoId;
+    }
+
+    /**
      * @return string
      */
     public function __toString() : string
