@@ -5,6 +5,8 @@ namespace spec\DevBoardLib\GithubCore\Repo;
 use DevBoardLib\GithubCore\Repo\GithubRepoOwner;
 use DevBoardLib\GithubCore\User\GithubUser;
 use DevBoardLib\GithubCore\User\GithubUserId;
+use DevBoardLib\GithubCore\User\Type\GithubType;
+use DevBoardLib\GithubCore\User\Type\GithubTypeOrganization;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -16,16 +18,16 @@ class GithubRepoOwnerSpec extends ObjectBehavior
         $this->shouldHaveType(GithubUser::class);
     }
 
-    public function let(GithubUserId $githubUserId)
+    public function let(GithubUserId $githubUserId, GithubTypeOrganization $githubType)
     {
         $githubUserId->__toString()->willReturn('6789');
+        $githubType->__toString()->willReturn('Organization');
 
         $this->beConstructedWith(
             $githubUserId,
             $username = 'username',
-            $email = 'john.doe@example.com',
-            $name = 'John Doe',
-            $avatarUrl = 'http://...'
+            $avatarUrl = 'http://...',
+            $githubType
         );
     }
 
@@ -33,9 +35,10 @@ class GithubRepoOwnerSpec extends ObjectBehavior
     {
         $this->getGithubUserId()->shouldReturn($githubUserId);
         $this->getUsername()->shouldReturn('username');
-        $this->getEmail()->shouldReturn('john.doe@example.com');
-        $this->getName()->shouldReturn('John Doe');
+        $this->getEmail()->shouldReturn(null);
+        $this->getName()->shouldReturn(null);
         $this->getAvatarUrl()->shouldReturn('http://...');
+        $this->getType()->shouldReturnAnInstanceOf(GithubType::class);
     }
 
     public function it_can_be_serialized_and_deserialized()

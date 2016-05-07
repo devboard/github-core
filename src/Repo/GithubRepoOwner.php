@@ -4,6 +4,8 @@ namespace DevBoardLib\GithubCore\Repo;
 
 use DevBoardLib\GithubCore\User\GithubUser;
 use DevBoardLib\GithubCore\User\GithubUserId;
+use DevBoardLib\GithubCore\User\Type\GithubType;
+use DevBoardLib\GithubCore\User\Type\GithubTypeFactory;
 
 /**
  * Value object representing github repo owner.
@@ -15,33 +17,28 @@ class GithubRepoOwner implements GithubUser
     /** @var string */
     private $username;
     /** @var string */
-    private $email;
-    /** @var string */
-    private $name;
-    /** @var string */
     private $avatarUrl;
+    /** @var GithubType */
+    private $type;
 
     /**
      * GithubUserSource constructor.
      *
      * @param GithubUserId $githubUserId
      * @param string       $username
-     * @param string       $email
-     * @param string       $name
      * @param string       $avatarUrl
+     * @param GithubType   $type
      */
     public function __construct(
         GithubUserId $githubUserId,
         string $username,
-        string $email,
-        string $name,
-        string $avatarUrl
+        string $avatarUrl,
+        GithubType $type
     ) {
         $this->githubUserId = $githubUserId;
         $this->username     = $username;
-        $this->email        = $email;
-        $this->name         = $name;
         $this->avatarUrl    = $avatarUrl;
+        $this->type         = $type;
     }
 
     /**
@@ -61,19 +58,25 @@ class GithubRepoOwner implements GithubUser
     }
 
     /**
-     * @return string
      */
-    public function getEmail() : string
+    public function getEmail()
     {
-        return $this->email;
+        return null;
     }
 
     /**
-     * @return string
      */
-    public function getName() : string
+    public function getName()
     {
-        return $this->name;
+        return null;
+    }
+
+    /**
+     * @return GithubType
+     */
+    public function getType() : GithubType
+    {
+        return $this->type;
     }
 
     /**
@@ -92,9 +95,8 @@ class GithubRepoOwner implements GithubUser
         return [
             'githubUserId' => (string) $this->githubUserId,
             'username'     => $this->username,
-            'email'        => $this->email,
-            'name'         => $this->name,
             'avatarUrl'    => $this->avatarUrl,
+            'type'         => (string) $this->type,
         ];
     }
 
@@ -108,9 +110,8 @@ class GithubRepoOwner implements GithubUser
         return new static(
             new GithubUserId($data['githubUserId']),
             $data['username'],
-            $data['email'],
-            $data['name'],
-            $data['avatarUrl']
+            $data['avatarUrl'],
+            GithubTypeFactory::create($data['type'])
         );
     }
 }
