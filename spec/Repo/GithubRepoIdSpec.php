@@ -2,6 +2,7 @@
 
 namespace spec\DevBoardLib\GithubCore\Repo;
 
+use DevBoardLib\GithubCore\Identifier;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -10,7 +11,7 @@ class GithubRepoIdSpec extends ObjectBehavior
     public function it_is_initializable()
     {
         $this->shouldHaveType('DevBoardLib\GithubCore\Repo\GithubRepoId');
-        $this->shouldHaveType('DevBoardLib\GithubCore\Identifier');
+        $this->shouldHaveType(Identifier::class);
     }
 
     public function let()

@@ -17,7 +17,7 @@ interface GithubRepo extends GithubRepoApiInterface
     public function isFork();
 
     /** @return string */
-    public function getDefaultBranch();
+    public function getDefaultBranchName();
 
     /** @return bool */
     public function isPrivate();

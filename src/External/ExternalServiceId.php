@@ -9,6 +9,9 @@ use DevBoardLib\GithubCore\Identifier;
  */
 class ExternalServiceId implements Identifier
 {
+    /**
+     * @var
+     */
     private $externalServiceId;
 
     /**

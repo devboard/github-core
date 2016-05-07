@@ -9,6 +9,9 @@ use DevBoardLib\GithubCore\Identifier;
  */
 class GithubMilestoneId implements Identifier
 {
+    /**
+     * @var
+     */
     private $githubMilestoneId;
 
     /**

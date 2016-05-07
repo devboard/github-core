@@ -9,6 +9,9 @@ use DevBoardLib\GithubCore\Identifier;
  */
 class GithubIssueId implements Identifier
 {
+    /**
+     * @var
+     */
     private $githubIssueId;
 
     /**

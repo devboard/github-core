@@ -9,6 +9,9 @@ use DevBoardLib\GithubCore\Identifier;
  */
 class GithubPullRequestId implements Identifier
 {
+    /**
+     * @var
+     */
     private $githubPullRequestId;
 
     /**

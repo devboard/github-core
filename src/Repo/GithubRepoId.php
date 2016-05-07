@@ -9,6 +9,9 @@ use DevBoardLib\GithubCore\Identifier;
  */
 class GithubRepoId implements Identifier
 {
+    /**
+     * @var int
+     */
     private $githubRepoId;
 
     /**
@@ -16,7 +19,7 @@ class GithubRepoId implements Identifier
      *
      * @param $githubRepoId
      */
-    public function __construct($githubRepoId)
+    public function __construct(int $githubRepoId)
     {
         $this->githubRepoId = $githubRepoId;
     }
@@ -24,7 +27,7 @@ class GithubRepoId implements Identifier
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString() : string
     {
         return (string) $this->githubRepoId;
     }

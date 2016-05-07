@@ -9,6 +9,9 @@ use DevBoardLib\GithubCore\Identifier;
  */
 class GithubUserId implements Identifier
 {
+    /**
+     * @var
+     */
     private $githubUserId;
 
     /**

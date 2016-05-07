@@ -9,6 +9,9 @@ use DevBoardLib\GithubCore\Identifier;
  */
 class GithubCommitStatusId implements Identifier
 {
+    /**
+     * @var
+     */
     private $githubCommitStatusId;
 
     /**

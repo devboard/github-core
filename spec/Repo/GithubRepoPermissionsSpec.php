@@ -13,18 +13,15 @@ class GithubRepoPermissionsSpec extends ObjectBehavior
         $this->shouldHaveType('DevBoardLib\GithubCore\Repo\GithubRepoPermissonsInterface');
     }
 
-    public function let($admin, $push, $read)
+    public function let()
     {
-        $this->beConstructedWith($admin, $push, $read);
+        $this->beConstructedWith($admin = false, $push = false, $read = false);
     }
 
-    public function it_exposes_all_constructor_params_via_getters(
-        $admin,
-        $push,
-        $read
-    ) {
-        $this->isAdmin()->shouldReturn($admin);
-        $this->isPushAllowed()->shouldReturn($push);
-        $this->isReadAllowed()->shouldReturn($read);
+    public function it_exposes_all_constructor_params_via_getters()
+    {
+        $this->isAdmin()->shouldReturn(false);
+        $this->isPushAllowed()->shouldReturn(false);
+        $this->isReadAllowed()->shouldReturn(false);
     }
 }

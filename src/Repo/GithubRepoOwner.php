@@ -1,11 +1,14 @@
 <?php
 
-namespace DevBoardLib\GithubCore\User;
+namespace DevBoardLib\GithubCore\Repo;
+
+use DevBoardLib\GithubCore\User\GithubUser;
+use DevBoardLib\GithubCore\User\GithubUserId;
 
 /**
- * Class GithubUserSource.
+ * Value object representing github repo owner.
  */
-class GithubUserSource implements GithubUser
+class GithubRepoOwner implements GithubUser
 {
     /** @var GithubUserId */
     private $githubUserId;
@@ -30,9 +33,9 @@ class GithubUserSource implements GithubUser
     public function __construct(
         GithubUserId $githubUserId,
         string $username,
-        string $email = null,
-        string $name = null,
-        string $avatarUrl = null
+        string $email,
+        string $name,
+        string $avatarUrl
     ) {
         $this->githubUserId = $githubUserId;
         $this->username     = $username;
@@ -79,5 +82,35 @@ class GithubUserSource implements GithubUser
     public function getAvatarUrl() : string
     {
         return $this->avatarUrl;
+    }
+
+    /**
+     * @return array
+     */
+    public function serialize() : array
+    {
+        return [
+            'githubUserId' => (string) $this->githubUserId,
+            'username'     => $this->username,
+            'email'        => $this->email,
+            'name'         => $this->name,
+            'avatarUrl'    => $this->avatarUrl,
+        ];
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return GithubRepoOwner
+     */
+    public static function deserialize(array  $data) : GithubRepoOwner
+    {
+        return new static(
+            new GithubUserId($data['githubUserId']),
+            $data['username'],
+            $data['email'],
+            $data['name'],
+            $data['avatarUrl']
+        );
     }
 }

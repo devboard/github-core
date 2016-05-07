@@ -21,7 +21,7 @@ class GithubRepoPermissions implements GithubRepoPermissonsInterface
      * @param bool $push
      * @param bool $read
      */
-    public function __construct($admin, $push, $read)
+    public function __construct(bool $admin, bool $push, bool $read)
     {
         $this->admin = $admin;
         $this->push  = $push;
@@ -31,7 +31,7 @@ class GithubRepoPermissions implements GithubRepoPermissonsInterface
     /**
      * @return bool
      */
-    public function isAdmin()
+    public function isAdmin() : bool
     {
         return $this->admin;
     }
@@ -39,7 +39,7 @@ class GithubRepoPermissions implements GithubRepoPermissonsInterface
     /**
      * @return bool
      */
-    public function isPushAllowed()
+    public function isPushAllowed() : bool
     {
         return $this->push;
     }
@@ -47,7 +47,7 @@ class GithubRepoPermissions implements GithubRepoPermissonsInterface
     /**
      * @return bool
      */
-    public function isReadAllowed()
+    public function isReadAllowed() : bool
     {
         return $this->read;
     }

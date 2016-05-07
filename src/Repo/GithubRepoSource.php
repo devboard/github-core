@@ -2,8 +2,6 @@
 
 namespace DevBoardLib\GithubCore\Repo;
 
-use DateTime;
-use DevBoardLib\GithubCore\User\GithubUser;
 use DevBoardLib\GithubCore\User\GithubUserId;
 
 /**
@@ -13,99 +11,95 @@ class GithubRepoSource implements GithubRepo, GithubRepoPermissonsInterface
 {
     /** @var GithubRepoId */
     private $id;
-    /** @var GithubUser */
-    private $ownerUser;
-    /** @var string */
+    /** @var GithubRepoOwner */
     private $owner;
-    /** @var string */
+    /** @var GithubRepoName */
     private $name;
-    /** @var string */
+    /** @var GithubRepoFullName */
     private $fullName;
     /** @var string */
     private $htmlUrl;
     /** @var string */
     private $description;
-    /** @var int */
+    /** @var bool */
     private $fork;
     /** @var string */
-    private $defaultBranch;
-    /** @var int */
+    private $defaultBranchName;
+    /** @var bool */
     private $private;
-    /** @var string */
+    /** @var GithubRepoGitUrl */
     private $gitUrl;
-    /** @var string */
+    /** @var GithubRepoSshUrl */
     private $sshUrl;
     /** @var GithubRepoPermissions */
     private $permissions;
-    /** @var DateTime */
+    /** @var GithubRepoCreatedAt */
     private $githubCreatedAt;
-    /** @var DateTime */
+    /** @var GithubRepoUpdatedAt */
     private $githubUpdatedAt;
-    /** @var DateTime */
+    /** @var GithubRepoPushedAt */
     private $githubPushedAt;
 
     /**
      * GithubRepoSource constructor.
      *
-     * @param GithubRepoId          $id
-     * @param GithubUser            $ownerUser
-     * @param string                $owner
-     * @param string                $name
-     * @param string                $fullName
-     * @param string                $htmlUrl
-     * @param string                $description
-     * @param bool                  $fork
-     * @param string                $defaultBranch
-     * @param bool                  $private
-     * @param string                $gitUrl
-     * @param string                $sshUrl
-     * @param GithubRepoPermissions $permissions
-     * @param DateTime              $githubCreatedAt
-     * @param DateTime              $githubUpdatedAt
-     * @param DateTime              $githubPushedAt
      *
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
+     *
+     * @param GithubRepoId          $id
+     * @param GithubRepoOwner       $owner
+     * @param GithubRepoName        $name
+     * @param GithubRepoFullName    $fullName
+     * @param                       $htmlUrl
+     * @param                       $description
+     * @param bool                  $fork
+     * @param                       $defaultBranchName
+     * @param bool                  $private
+     * @param GithubRepoGitUrl      $gitUrl
+     * @param GithubRepoSshUrl      $sshUrl
+     * @param GithubRepoPermissions $permissions
+     * @param GithubRepoCreatedAt   $githubCreatedAt
+     * @param GithubRepoUpdatedAt   $githubUpdatedAt
+     * @param GithubRepoPushedAt    $githubPushedAt
      */
     public function __construct(
         GithubRepoId $id,
-        GithubUser $ownerUser,
-        $owner,
-        $name,
-        $fullName,
-        $htmlUrl,
-        $description,
-        $fork,
-        $defaultBranch,
-        $private,
-        $gitUrl,
-        $sshUrl,
+        GithubRepoOwner $owner,
+        GithubRepoName $name,
+        GithubRepoFullName $fullName,
+        string $htmlUrl,
+        string $description,
+        bool $fork,
+        string $defaultBranchName,
+        bool $private,
+        GithubRepoGitUrl $gitUrl,
+        GithubRepoSshUrl $sshUrl,
         GithubRepoPermissions $permissions = null,
-        DateTime $githubCreatedAt,
-        DateTime $githubUpdatedAt,
-        DateTime $githubPushedAt
+        GithubRepoCreatedAt $githubCreatedAt,
+        GithubRepoUpdatedAt $githubUpdatedAt,
+        GithubRepoPushedAt $githubPushedAt
     ) {
-        $this->id              = $id;
-        $this->ownerUser       = $ownerUser;
-        $this->owner           = $owner;
-        $this->name            = $name;
-        $this->fullName        = $fullName;
-        $this->htmlUrl         = $htmlUrl;
-        $this->description     = $description;
-        $this->fork            = $fork;
-        $this->defaultBranch   = $defaultBranch;
-        $this->private         = $private;
-        $this->gitUrl          = $gitUrl;
-        $this->sshUrl          = $sshUrl;
-        $this->permissions     = $permissions;
-        $this->githubCreatedAt = $githubCreatedAt;
-        $this->githubUpdatedAt = $githubUpdatedAt;
-        $this->githubPushedAt  = $githubPushedAt;
+        $this->id                = $id;
+        $this->owner             = $owner;
+        $this->name              = $name;
+        $this->fullName          = $fullName;
+        $this->htmlUrl           = $htmlUrl;
+        $this->description       = $description;
+        $this->fork              = $fork;
+        $this->defaultBranchName = $defaultBranchName;
+        $this->private           = $private;
+        $this->gitUrl            = $gitUrl;
+        $this->sshUrl            = $sshUrl;
+        $this->permissions       = $permissions;
+        $this->githubCreatedAt   = $githubCreatedAt;
+        $this->githubUpdatedAt   = $githubUpdatedAt;
+        $this->githubPushedAt    = $githubPushedAt;
     }
 
     /**
      * @return GithubRepoId
      */
-    public function getId()
+    public function getId() : GithubRepoId
     {
         return $this->id;
     }
@@ -113,39 +107,31 @@ class GithubRepoSource implements GithubRepo, GithubRepoPermissonsInterface
     /**
      * @return GithubUserId
      */
-    public function getOwnerUserId()
+    public function getOwnerUserId() : GithubUserId
     {
-        return $this->ownerUser->getGithubUserId();
+        return $this->owner->getGithubUserId();
     }
 
     /**
-     * @return GithubUser
+     * @return GithubRepoOwner
      */
-    public function getOwnerUser()
-    {
-        return $this->ownerUser;
-    }
-
-    /**
-     * @return string
-     */
-    public function getOwner()
+    public function getOwner() : GithubRepoOwner
     {
         return $this->owner;
     }
 
     /**
-     * @return string
+     * @return GithubRepoName
      */
-    public function getName()
+    public function getName() : GithubRepoName
     {
         return $this->name;
     }
 
     /**
-     * @return string
+     * @return GithubRepoFullName
      */
-    public function getFullName()
+    public function getFullName() : GithubRepoFullName
     {
         return $this->fullName;
     }
@@ -153,7 +139,7 @@ class GithubRepoSource implements GithubRepo, GithubRepoPermissonsInterface
     /**
      * @return string
      */
-    public function getHtmlUrl()
+    public function getHtmlUrl() : string
     {
         return $this->htmlUrl;
     }
@@ -161,15 +147,15 @@ class GithubRepoSource implements GithubRepo, GithubRepoPermissonsInterface
     /**
      * @return string
      */
-    public function getDescription()
+    public function getDescription() : string
     {
         return $this->description;
     }
 
     /**
-     * @return int
+     * @return bool
      */
-    public function isFork()
+    public function isFork() : bool
     {
         return $this->fork;
     }
@@ -177,31 +163,31 @@ class GithubRepoSource implements GithubRepo, GithubRepoPermissonsInterface
     /**
      * @return string
      */
-    public function getDefaultBranch()
+    public function getDefaultBranchName() : string
     {
-        return $this->defaultBranch;
+        return $this->defaultBranchName;
     }
 
     /**
-     * @return int
+     * @return bool
      */
-    public function isPrivate()
+    public function isPrivate() : bool
     {
         return $this->private;
     }
 
     /**
-     * @return string
+     * @return GithubRepoGitUrl
      */
-    public function getGitUrl()
+    public function getGitUrl() : GithubRepoGitUrl
     {
         return $this->gitUrl;
     }
 
     /**
-     * @return string
+     * @return GithubRepoSshUrl
      */
-    public function getSshUrl()
+    public function getSshUrl() : GithubRepoSshUrl
     {
         return $this->sshUrl;
     }
@@ -209,7 +195,7 @@ class GithubRepoSource implements GithubRepo, GithubRepoPermissonsInterface
     /**
      * @return bool
      */
-    public function isAdmin()
+    public function isAdmin() : bool
     {
         return $this->permissions->isAdmin();
     }
@@ -217,7 +203,7 @@ class GithubRepoSource implements GithubRepo, GithubRepoPermissonsInterface
     /**
      * @return bool
      */
-    public function isPushAllowed()
+    public function isPushAllowed() : bool
     {
         return $this->permissions->isPushAllowed();
     }
@@ -225,31 +211,31 @@ class GithubRepoSource implements GithubRepo, GithubRepoPermissonsInterface
     /**
      * @return bool
      */
-    public function isReadAllowed()
+    public function isReadAllowed() : bool
     {
         return $this->permissions->isReadAllowed();
     }
 
     /**
-     * @return DateTime
+     * @return GithubRepoCreatedAt
      */
-    public function getGithubCreatedAt()
+    public function getGithubCreatedAt() : GithubRepoCreatedAt
     {
         return $this->githubCreatedAt;
     }
 
     /**
-     * @return DateTime
+     * @return GithubRepoUpdatedAt
      */
-    public function getGithubUpdatedAt()
+    public function getGithubUpdatedAt() : GithubRepoUpdatedAt
     {
         return $this->githubUpdatedAt;
     }
 
     /**
-     * @return DateTime
+     * @return GithubRepoPushedAt
      */
-    public function getGithubPushedAt()
+    public function getGithubPushedAt() : GithubRepoPushedAt
     {
         return $this->githubPushedAt;
     }
