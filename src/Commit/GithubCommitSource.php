@@ -39,11 +39,11 @@ class GithubCommitSource implements GithubCommit
         GithubCommitCommitter $committer,
         $message
     ) {
-        $this->sha          = $sha;
+        $this->sha = $sha;
         $this->githubRepoId = $githubRepoId;
-        $this->author       = $author;
-        $this->committer    = $committer;
-        $this->message      = $message;
+        $this->author = $author;
+        $this->committer = $committer;
+        $this->message = $message;
     }
 
     /**
@@ -84,5 +84,37 @@ class GithubCommitSource implements GithubCommit
     public function getMessage() : string
     {
         return $this->message;
+    }
+
+    /**
+     * @return array
+     */
+    public function serialize()
+    {
+        return [
+            'sha'          => (string)$this->sha,
+            'githubRepoId' => (string)$this->githubRepoId,
+            'author'       => $this->author->serialize(),
+            'committer'    => $this->committer->serialize(),
+            'message'      => $this->message,
+        ];
+    }
+
+    /**
+     * @param array $data
+     *
+     * @throws \Exception
+     *
+     * @return static
+     */
+    public static function deserialize(array $data)
+    {
+        return new static(
+            new GithubCommitSha($data['sha']),
+            new GithubRepoId($data['githubRepoId']),
+            GithubCommitAuthor::deserialize($data['author']),
+            GithubCommitCommitter::deserialize($data['committer']),
+            $data['message']
+        );
     }
 }
