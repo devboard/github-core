@@ -39,11 +39,11 @@ class GithubCommitSource implements GithubCommit
         GithubCommitCommitter $committer,
         $message
     ) {
-        $this->sha = $sha;
+        $this->sha          = $sha;
         $this->githubRepoId = $githubRepoId;
-        $this->author = $author;
-        $this->committer = $committer;
-        $this->message = $message;
+        $this->author       = $author;
+        $this->committer    = $committer;
+        $this->message      = $message;
     }
 
     /**
@@ -92,8 +92,8 @@ class GithubCommitSource implements GithubCommit
     public function serialize()
     {
         return [
-            'sha'          => (string)$this->sha,
-            'githubRepoId' => (string)$this->githubRepoId,
+            'sha'          => (string) $this->sha,
+            'githubRepoId' => (string) $this->githubRepoId,
             'author'       => $this->author->serialize(),
             'committer'    => $this->committer->serialize(),
             'message'      => $this->message,
