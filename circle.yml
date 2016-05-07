@@ -15,6 +15,6 @@ test:
   override:
     - php -d 'xdebug.max_nesting_level=500' bin/phpunit
     - ./bin/phpspec run --no-interaction
-    - ant php-cs-fixer-check-task
+    - ant php-cs-fixer-check
     - ant phpcs-task
     - ant phpmd-task
