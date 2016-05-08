@@ -93,7 +93,7 @@ class GithubCommitSource implements GithubCommit
     {
         return [
             'sha'          => (string) $this->sha,
-            'githubRepoId' => (string) $this->githubRepoId,
+            'githubRepoId' => $this->githubRepoId->getId(),
             'author'       => $this->author->serialize(),
             'committer'    => $this->committer->serialize(),
             'message'      => $this->message,
@@ -111,7 +111,7 @@ class GithubCommitSource implements GithubCommit
     {
         return new static(
             new GithubCommitSha($data['sha']),
-            new GithubRepoId($data['githubRepoId']),
+            new GithubRepoId((int) $data['githubRepoId']),
             GithubCommitAuthor::deserialize($data['author']),
             GithubCommitCommitter::deserialize($data['committer']),
             $data['message']
