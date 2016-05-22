@@ -16,7 +16,9 @@ cache:
   directories:
     - vendor
     - bin
-    - node_modules
+
+notifications:
+  email: false
 
 before_script:
   - if [[ $coverage == 'phpspec' ]]; then cp etc/ci/phpspec.yml phpspec.yml; fi;
