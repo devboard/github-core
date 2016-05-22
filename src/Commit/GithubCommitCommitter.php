@@ -114,6 +114,6 @@ class GithubCommitCommitter
             return null;
         }
 
-        return new GithubUserId($id);
+        return new GithubUserId((int) $id);
     }
 }
