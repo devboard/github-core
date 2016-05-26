@@ -1,5 +1,6 @@
 <?php
 
+declare (strict_types = 1);
 namespace DevBoardLib\GithubCore\Tag;
 
 use DevBoardLib\GithubCore\Commit\GithubCommit;

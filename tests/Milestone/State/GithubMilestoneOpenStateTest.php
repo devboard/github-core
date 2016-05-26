@@ -1,5 +1,6 @@
 <?php
 
+declare (strict_types = 1);
 namespace tests\DevBoardLib\GithubCore\Milestone\State;
 
 use DevBoardLib\GithubCore\Milestone\State\GithubMilestoneOpenState;

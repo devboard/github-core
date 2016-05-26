@@ -1,5 +1,6 @@
 <?php
 
+declare (strict_types = 1);
 namespace spec\DevBoardLib\GithubCore\User\Type;
 
 use DevBoardLib\GithubCore\User\Type\GithubTypeOrganization;

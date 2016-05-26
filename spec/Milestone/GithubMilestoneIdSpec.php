@@ -1,5 +1,6 @@
 <?php
 
+declare (strict_types = 1);
 namespace spec\DevBoardLib\GithubCore\Milestone;
 
 use PhpSpec\ObjectBehavior;

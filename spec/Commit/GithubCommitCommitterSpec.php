@@ -1,5 +1,6 @@
 <?php
 
+declare (strict_types = 1);
 namespace spec\DevBoardLib\GithubCore\Commit;
 
 use DevBoardLib\GithubCore\Commit\GithubCommitCommitter;

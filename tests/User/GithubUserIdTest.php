@@ -1,5 +1,6 @@
 <?php
 
+declare (strict_types = 1);
 namespace tests\DevBoardLib\GithubCore\User;
 
 use DevBoardLib\GithubCore\User\GithubUserId;
