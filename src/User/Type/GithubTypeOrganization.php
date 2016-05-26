@@ -11,7 +11,7 @@ class GithubTypeOrganization implements GithubType
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString() : string
     {
         return 'Organization';
     }

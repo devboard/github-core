@@ -11,7 +11,7 @@ class GithubIssueClosedState implements GithubIssueState
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString() : string
     {
         return 'closed';
     }

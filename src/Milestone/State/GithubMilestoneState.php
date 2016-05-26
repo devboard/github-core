@@ -8,5 +8,5 @@ namespace DevBoardLib\GithubCore\Milestone\State;
  */
 interface GithubMilestoneState
 {
-    public function __toString();
+    public function __toString() : string;
 }

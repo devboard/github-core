@@ -109,7 +109,7 @@ class GithubRepoOwner implements GithubUser
     public static function deserialize(array  $data) : GithubRepoOwner
     {
         return new static(
-            new GithubUserId($data['githubUserId']),
+            new GithubUserId((int) $data['githubUserId']),
             $data['username'],
             $data['avatarUrl'],
             GithubTypeFactory::create($data['type'])

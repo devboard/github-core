@@ -8,5 +8,5 @@ namespace DevBoardLib\GithubCore\User\Type;
  */
 interface GithubType
 {
-    public function __toString();
+    public function __toString() : string;
 }

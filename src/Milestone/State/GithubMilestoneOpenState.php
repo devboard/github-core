@@ -11,7 +11,7 @@ class GithubMilestoneOpenState implements GithubMilestoneState
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString() : string
     {
         return 'open';
     }

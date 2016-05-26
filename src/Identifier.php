@@ -8,5 +8,5 @@ namespace DevBoardLib\GithubCore;
  */
 interface Identifier
 {
-    public function __toString();
+    public function __toString() : string;
 }

@@ -11,7 +11,7 @@ class GithubCommitFailureState implements GithubCommitState
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString() : string
     {
         return 'failure';
     }

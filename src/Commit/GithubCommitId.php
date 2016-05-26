@@ -31,7 +31,7 @@ class GithubCommitId implements Identifier
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString() : string
     {
         return $this->githubRepoId->__toString().'-'.$this->commitSha->__toString();
     }
@@ -41,10 +41,10 @@ class GithubCommitId implements Identifier
      *
      * @return GithubCommitId
      */
-    public static function createFromValue($value)
+    public static function createFromValue($value) : GithubCommitId
     {
         list($repoId, $commitSha) = explode('-', $value, 2);
 
-        return new self(new GithubRepoId($repoId), new GithubCommitSha($commitSha));
+        return new self(new GithubRepoId((int) $repoId), new GithubCommitSha($commitSha));
     }
 }

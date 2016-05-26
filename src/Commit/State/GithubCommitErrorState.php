@@ -11,7 +11,7 @@ class GithubCommitErrorState implements GithubCommitState
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString() : string
     {
         return 'error';
     }

@@ -8,5 +8,5 @@ namespace DevBoardLib\GithubCore\Issue\State;
  */
 interface GithubIssueState
 {
-    public function __toString();
+    public function __toString() : string;
 }

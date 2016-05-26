@@ -17,7 +17,7 @@ class GithubTagIdSpec extends ObjectBehavior
 
     public function let(GithubRepoId $githubRepoId)
     {
-        $githubRepoId->__toString()->willReturn(123);
+        $githubRepoId->__toString()->willReturn('123');
         $this->beConstructedWith($githubRepoId, '0.2');
     }
 

@@ -8,5 +8,5 @@ namespace DevBoardLib\GithubCore\PullRequest\State;
  */
 interface GithubPullRequestState
 {
-    public function __toString();
+    public function __toString() : string;
 }

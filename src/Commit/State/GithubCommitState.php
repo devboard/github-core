@@ -8,5 +8,5 @@ namespace DevBoardLib\GithubCore\Commit\State;
  */
 interface GithubCommitState
 {
-    public function __toString();
+    public function __toString() : string;
 }

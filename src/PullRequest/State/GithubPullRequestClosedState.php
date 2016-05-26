@@ -11,7 +11,7 @@ class GithubPullRequestClosedState implements GithubPullRequestState
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString() : string
     {
         return 'closed';
     }
