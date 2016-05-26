@@ -8,7 +8,7 @@ namespace DevBoardLib\GithubCore\ExternalServices;
  */
 class ExternalServiceFactory
 {
-    public function create(string $context) : ExternalService
+    public static function create(string $context) : ExternalService
     {
         if (ExternalService::CIRCLE_CI === $context) {
             return new CircleCi();

@@ -11,7 +11,7 @@ use DevBoardLib\GithubCore\CommitStatus\State\Success;
 
 class StateFactory
 {
-    public function create(string $text) : State
+    public static function create(string $text) : State
     {
         if (State::PENDING === $text) {
             return new Pending();
