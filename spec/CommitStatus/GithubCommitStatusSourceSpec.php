@@ -4,9 +4,11 @@ namespace spec\DevBoardLib\GithubCore\CommitStatus;
 
 use DateTime;
 use DevBoardLib\GithubCore\Commit\GithubCommitId;
+use DevBoardLib\GithubCore\CommitStatus\GithubCommitStatus;
 use DevBoardLib\GithubCore\CommitStatus\GithubCommitStatusId;
-use DevBoardLib\GithubCore\CommitStatus\State\GithubCommitStatusState;
-use DevBoardLib\GithubCore\External\ExternalServiceId;
+use DevBoardLib\GithubCore\CommitStatus\State;
+use DevBoardLib\GithubCore\ExternalServices\ExternalService;
+use DevBoardLib\GithubCore\Repo\GithubRepoId;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -15,42 +17,49 @@ class GithubCommitStatusSourceSpec extends ObjectBehavior
     public function it_is_initializable()
     {
         $this->shouldHaveType('DevBoardLib\GithubCore\CommitStatus\GithubCommitStatusSource');
-        $this->shouldHaveType('DevBoardLib\GithubCore\CommitStatus\GithubCommitStatus');
+        $this->shouldHaveType(GithubCommitStatus::class);
     }
 
     public function let(
         GithubCommitStatusId $id,
-        GithubCommitId $githubCommitId,
-        ExternalServiceId $githubExternalServiceId,
-        GithubCommitStatusState $githubState,
-        DateTime $githubCreatedAt,
-        DateTime $githubUpdatedAt
+        GithubRepoId $githubRepoId,
+        GithubCommitId $commitId,
+        ExternalService $externalService,
+        State $state,
+        DateTime $createdAt,
+        DateTime $updatedAt
     ) {
         $this->beConstructedWith(
             $id,
-            $githubCommitId,
-            $githubExternalServiceId,
+            $githubRepoId,
+            $commitId,
+            $externalService,
             'description',
             'target-url',
-            $githubState,
-            $githubCreatedAt,
-            $githubUpdatedAt
+            $state,
+            $createdAt,
+            $updatedAt
         );
     }
 
-    public function it_has_id_of_last_received_status($id)
+    public function it_has_id($id)
     {
-        $this->getLastReceivedGithubStatusId()->shouldReturn($id);
+        $this->getId()->shouldReturn($id);
     }
 
-    public function it_has_github_commit_id($githubCommitId)
+    public function it_has_github_repo_id($githubRepoId)
     {
-        $this->getGithubCommitId()->shouldReturn($githubCommitId);
+        $this->getGithubRepoId()->shouldReturn($githubRepoId);
     }
 
-    public function it_has_external_service_id($githubExternalServiceId)
+    public function it_has_github_commit_id($commitId)
     {
-        $this->getGithubExternalServiceId()->shouldReturn($githubExternalServiceId);
+        $this->getCommitId()->shouldReturn($commitId);
+    }
+
+    public function it_has_external_service($externalService)
+    {
+        $this->getExternalService()->shouldReturn($externalService);
     }
 
     public function it_has_description()
@@ -63,18 +72,18 @@ class GithubCommitStatusSourceSpec extends ObjectBehavior
         $this->getTargetUrl()->shouldReturn('target-url');
     }
 
-    public function it_has_state($githubState)
+    public function it_has_state($state)
     {
-        $this->getGithubState()->shouldReturn($githubState);
+        $this->getState()->shouldReturn($state);
     }
 
-    public function it_knows_when_was_it_created($githubCreatedAt)
+    public function it_knows_when_was_it_created($createdAt)
     {
-        $this->getGithubCreatedAt()->shouldReturn($githubCreatedAt);
+        $this->getCreatedAt()->shouldReturn($createdAt);
     }
 
-    public function it_knows_when_was_last_updated_at($githubUpdatedAt)
+    public function it_knows_when_was_last_updated_at($updatedAt)
     {
-        $this->getGithubUpdatedAt()->shouldReturn($githubUpdatedAt);
+        $this->getUpdatedAt()->shouldReturn($updatedAt);
     }
 }

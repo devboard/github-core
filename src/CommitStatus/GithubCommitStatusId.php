@@ -4,9 +4,6 @@ namespace DevBoardLib\GithubCore\CommitStatus;
 
 use DevBoardLib\GithubCore\Identifier;
 
-/**
- * Class GithubCommitStatusId.
- */
 class GithubCommitStatusId implements Identifier
 {
     /**
@@ -17,9 +14,9 @@ class GithubCommitStatusId implements Identifier
     /**
      * CommitStatusId constructor.
      *
-     * @param $githubCommitStatusId
+     * @param string $githubCommitStatusId
      */
-    public function __construct($githubCommitStatusId)
+    public function __construct(string $githubCommitStatusId)
     {
         $this->githubCommitStatusId = $githubCommitStatusId;
     }
@@ -27,7 +24,7 @@ class GithubCommitStatusId implements Identifier
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString() : string
     {
         return (string) $this->githubCommitStatusId;
     }

@@ -4,110 +4,122 @@ namespace DevBoardLib\GithubCore\CommitStatus;
 
 use DateTime;
 use DevBoardLib\GithubCore\Commit\GithubCommitId;
-use DevBoardLib\GithubCore\CommitStatus\State\GithubCommitStatusState;
-use DevBoardLib\GithubCore\External\ExternalServiceId;
+use DevBoardLib\GithubCore\CommitStatus\State;
+use DevBoardLib\GithubCore\ExternalServices\ExternalService;
+use DevBoardLib\GithubCore\Repo\GithubRepoId;
 
-/**
- * Class GithubCommitStatusSource.
- */
 class GithubCommitStatusSource implements GithubCommitStatus
 {
     /** @var GithubCommitStatusId */
-    private $lastReceivedGithubStatusId;
+    private $id;
+    /** @var GithubRepoId */
+    private $githubRepoId;
     /** @var GithubCommitId */
-    private $githubCommitId;
-    /** @var ExternalServiceId */
-    private $githubExternalServiceId;
+    private $commitId;
+    /** @var ExternalService */
+    private $externalService;
     /** @var string */
     private $description;
     /** @var string */
     private $targetUrl;
-    /** @var GithubCommitStatusState */
-    private $githubState;
+    /** @var State */
+    private $state;
     /** @var DateTime */
-    private $githubCreatedAt;
+    private $createdAt;
     /** @var DateTime */
-    private $githubUpdatedAt;
+    private $updatedAt;
 
-    /**
-     * GithubCommitStatusSource constructor.
-     *
-     * @param GithubCommitStatusId    $lastReceivedGithubStatusId
-     * @param GithubCommitId          $githubCommitId
-     * @param ExternalServiceId       $githubExternalServiceId
-     * @param string                  $description
-     * @param string                  $targetUrl
-     * @param GithubCommitStatusState $githubState
-     * @param DateTime                $githubCreatedAt
-     * @param DateTime                $githubUpdatedAt
-     */
     public function __construct(
-        GithubCommitStatusId $lastReceivedGithubStatusId,
-        GithubCommitId $githubCommitId,
-        ExternalServiceId $githubExternalServiceId,
-        $description,
-        $targetUrl,
-        GithubCommitStatusState $githubState,
-        DateTime $githubCreatedAt,
-        DateTime $githubUpdatedAt
+        GithubCommitStatusId $id,
+        GithubRepoId $githubRepoId,
+        GithubCommitId $commitId,
+        ExternalService $externalService,
+        string $description,
+        string $targetUrl,
+        State $state,
+        DateTime $createdAt,
+        DateTime $updatedAt
     ) {
-        $this->lastReceivedGithubStatusId = $lastReceivedGithubStatusId;
-        $this->githubCommitId             = $githubCommitId;
-        $this->githubExternalServiceId    = $githubExternalServiceId;
-        $this->description                = $description;
-        $this->targetUrl                  = $targetUrl;
-        $this->githubState                = $githubState;
-        $this->githubCreatedAt            = $githubCreatedAt;
-        $this->githubUpdatedAt            = $githubUpdatedAt;
+        $this->id              = $id;
+        $this->githubRepoId    = $githubRepoId;
+        $this->commitId        = $commitId;
+        $this->externalService = $externalService;
+        $this->description     = $description;
+        $this->targetUrl       = $targetUrl;
+        $this->state           = $state;
+        $this->createdAt       = $createdAt;
+        $this->updatedAt       = $updatedAt;
     }
 
     /**
      * @return GithubCommitStatusId
      */
-    public function getLastReceivedGithubStatusId()
+    public function getId() : GithubCommitStatusId
     {
-        return $this->lastReceivedGithubStatusId;
+        return $this->id;
     }
 
-    /** @return GithubCommitId */
-    public function getGithubCommitId()
+    /**
+     * @return GithubRepoId
+     */
+    public function getGithubRepoId() : GithubRepoId
     {
-        return $this->githubCommitId;
+        return $this->githubRepoId;
     }
 
-    /** @return ExternalServiceId */
-    public function getGithubExternalServiceId()
+    /**
+     * @return GithubCommitId
+     */
+    public function getCommitId() : GithubCommitId
     {
-        return $this->githubExternalServiceId;
+        return $this->commitId;
     }
 
-    /** @return string */
-    public function getDescription()
+    /**
+     * @return ExternalService
+     */
+    public function getExternalService() : ExternalService
+    {
+        return $this->externalService;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription() : string
     {
         return $this->description;
     }
 
-    /** @return string */
-    public function getTargetUrl()
+    /**
+     * @return string
+     */
+    public function getTargetUrl() : string
     {
         return $this->targetUrl;
     }
 
-    /** @return GithubCommitStatusState */
-    public function getGithubState()
+    /**
+     * @return State
+     */
+    public function getState() : State
     {
-        return $this->githubState;
+        return $this->state;
     }
 
-    /** @return DateTime */
-    public function getGithubCreatedAt()
+    /**
+     * @return DateTime
+     */
+    public function getCreatedAt() : DateTime
     {
-        return $this->githubCreatedAt;
+        return $this->createdAt;
     }
 
-    /** @return DateTime */
-    public function getGithubUpdatedAt()
+    /**
+     * @return DateTime
+     */
+    public function getUpdatedAt() : DateTime
     {
-        return $this->githubUpdatedAt;
+        return $this->updatedAt;
     }
 }

@@ -4,34 +4,54 @@ namespace DevBoardLib\GithubCore\CommitStatus;
 
 use DateTime;
 use DevBoardLib\GithubCore\Commit\GithubCommitId;
-use DevBoardLib\GithubCore\CommitStatus\State\GithubCommitStatusState;
-use DevBoardLib\GithubCore\External\ExternalServiceId;
+use DevBoardLib\GithubCore\CommitStatus\State;
+use DevBoardLib\GithubCore\ExternalServices\ExternalService;
+use DevBoardLib\GithubCore\Repo\GithubRepoId;
 
-/**
- */
 interface GithubCommitStatus
 {
-    /** @return GithubCommitStatusId */
-    public function getLastReceivedGithubStatusId();
+    /**
+     * @return GithubCommitStatusId
+     */
+    public function getId() : GithubCommitStatusId;
 
-    /** @return GithubCommitId */
-    public function getGithubCommitId();
+    /**
+     * @return GithubRepoId
+     */
+    public function getGithubRepoId() : GithubRepoId;
 
-    /** @return ExternalServiceId */
-    public function getGithubExternalServiceId();
+    /**
+     * @return GithubCommitId
+     */
+    public function getCommitId() : GithubCommitId;
 
-    /** @return string */
-    public function getDescription();
+    /**
+     * @return ExternalService
+     */
+    public function getExternalService() : ExternalService;
 
-    /** @return string */
-    public function getTargetUrl();
+    /**
+     * @return string
+     */
+    public function getDescription() : string;
 
-    /** @return GithubCommitStatusState */
-    public function getGithubState();
+    /**
+     * @return string
+     */
+    public function getTargetUrl() : string;
 
-    /** @return DateTime */
-    public function getGithubCreatedAt();
+    /**
+     * @return State
+     */
+    public function getState() : State;
 
-    /** @return DateTime */
-    public function getGithubUpdatedAt();
+    /**
+     * @return DateTime
+     */
+    public function getCreatedAt() : DateTime;
+
+    /**
+     * @return DateTime
+     */
+    public function getUpdatedAt() : DateTime;
 }
